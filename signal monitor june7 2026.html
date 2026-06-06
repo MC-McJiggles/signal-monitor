@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trump + Congress Signal Monitor — June 7, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #16161f;
+    --border: #1e1e2e;
+    --accent: #e8ff47;
+    --accent2: #ff6b35;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --green: #39ff8f;
+    --yellow: #ffd166;
+    --red: #ff4757;
+    --gray: #3a3a4a;
+    --green-bg: rgba(57,255,143,0.08);
+    --yellow-bg: rgba(255,209,102,0.08);
+    --red-bg: rgba(255,71,87,0.08);
+    --gray-bg: rgba(58,58,74,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    border-left: 4px solid var(--accent);
+    padding-left: 20px;
+    margin-bottom: 48px;
+  }
+  .header .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .header .date {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    background: var(--surface2);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(232,255,71,0.1);
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .section-body {
+    padding: 20px;
+  }
+
+  .section-body p {
+    font-size: 14px;
+    color: #c8c8d8;
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* SIGNAL PILLS */
+  .signal-high { color: var(--green); font-weight: 700; }
+  .signal-med { color: var(--yellow); font-weight: 700; }
+  .signal-low { color: var(--red); font-weight: 700; }
+  .signal-none { color: var(--muted); font-weight: 700; }
+
+  /* ALERT BOX */
+  .alert {
+    background: rgba(232,255,71,0.06);
+    border: 1px solid rgba(232,255,71,0.3);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* GRID TABLE */
+  .grid-wrapper {
+    overflow-x: auto;
+    margin-top: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead tr {
+    background: var(--surface2);
+  }
+
+  thead th {
+    padding: 12px 10px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  thead th:first-child {
+    text-align: left;
+    padding-left: 16px;
+  }
+
+  thead th:last-child { border-right: none; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 11px 10px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    text-align: left;
+    padding-left: 16px;
+    border-right: 1px solid var(--border);
+  }
+
+  tbody td:last-child { border-right: none; }
+
+  .ticker {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .ticker-sub {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 400;
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* SIGNAL DOTS */
+  .dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .dot-green {
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1.5px solid var(--green);
+  }
+
+  .dot-yellow {
+    background: var(--yellow-bg);
+    color: var(--yellow);
+    border: 1.5px solid var(--yellow);
+  }
+
+  .dot-red {
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1.5px solid var(--red);
+  }
+
+  .dot-gray {
+    background: var(--gray-bg);
+    color: var(--muted);
+    border: 1.5px solid var(--gray);
+  }
+
+  /* OVERALL BADGE */
+  .badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+  .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+  .badge-gray { background: var(--gray-bg); color: var(--muted); border: 1px solid var(--gray); }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    background: var(--surface2);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* BOTTOM LINE */
+  .bottom-line {
+    background: linear-gradient(135deg, rgba(232,255,71,0.06), rgba(255,107,53,0.04));
+    border: 1px solid rgba(232,255,71,0.25);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 40px;
+  }
+
+  .bottom-line .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .bottom-line p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.7;
+  }
+
+  /* MACRO ROW */
+  .macro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .macro-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+  }
+
+  .macro-card .macro-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .macro-card .macro-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .macro-card .macro-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .macro-card.green { border-color: rgba(57,255,143,0.3); }
+  .macro-card.yellow { border-color: rgba(255,209,102,0.3); }
+  .macro-card.red { border-color: rgba(255,71,87,0.3); }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    margin-top: 32px;
+    padding: 16px;
+    border-top: 1px solid var(--border);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+  }
+
+  .congress-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .congress-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+  }
+
+  .congress-card .name {
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .congress-card .party {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .congress-card .status {
+    font-size: 12px;
+    color: #c8c8d8;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  .tag-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+  .tag-yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+  .tag-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+  .tag-gray { background: var(--gray-bg); color: var(--muted); border: 1px solid var(--gray); }
+
+  @media (max-width: 600px) {
+    .congress-grid { grid-template-columns: 1fr; }
+    .macro-grid { grid-template-columns: 1fr 1fr; }
+    body { padding: 20px 12px; }
+    .header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="label">Signal Intelligence Report</div>
+    <h1>Trump + Congress<br>Signal Monitor</h1>
+    <div class="date">Saturday, June 7, 2026 &nbsp;·&nbsp; Weekly Wrap + Weekend Update</div>
+  </div>
+
+  <!-- SECTION 1: TRUTH SOCIAL -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S1</span>
+      <span class="section-title">Truth Social — Past 48h</span>
+    </div>
+    <div class="section-body">
+      <p>No new stock ticker mentions from Trump this weekend. Weekend silence is typical — the feed goes quiet without a news catalyst. No confirmation signals detected. Nothing crosses against the known Q1 2026 holdings watchlist.</p>
+      <p>Last confirmed signal on record: Trump praised <strong>$PLTR</strong> on April 10, calling it a proven war-fighting platform. The stock had been near its April low of $122 at the time. It has since rebounded 33%. That is the pattern this system is designed to catch before it fires — not after.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: TRUMP SEC -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S2</span>
+      <span class="section-title">Trump SEC Trades — OGE 278-T</span>
+    </div>
+    <div class="section-body">
+      <p>No new OGE filings above $500K this week. Q2 2026 trades won't surface until August due to the 30–45 day filing lag. The Q1 2026 confirmed holdings remain the active watchlist. All trades below were verified via OGE 278-T filings — the only legitimate source for presidential stock disclosures. Treat any claim not traceable to an OGE filing as unverified.</p>
+      <hr class="divider">
+      <p><strong>Verified Q1 2026 Trump Holdings:</strong> NVDA · MSFT · ORCL · PLTR · ServiceNow · Workday · AMZN · AAPL · BRCM · INTC · MRVL · DELL · AMZN</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3: CONGRESS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S3</span>
+      <span class="section-title">Congressional Traders — STOCK Act Filings</span>
+    </div>
+    <div class="section-body">
+      <div class="alert">⚡ PRIORITY WATCH — McCaul has still NOT bought semiconductors. This is the single highest-conviction confirmation signal in the system. When it fires, treat it as a five-alarm alert.</div>
+      <div class="congress-grid">
+        <div class="congress-card">
+          <div class="name">Michael McCaul</div>
+          <div class="party">R-TX · SEMICONDUCTOR CAUCUS CHAIR · $57.7M VOL</div>
+          <span class="tag tag-red">NO SEMI BUY</span>
+          <div class="status">Zero semiconductor purchases disclosed. Watching every filing.</div>
+        </div>
+        <div class="congress-card">
+          <div class="name">Nancy Pelosi</div>
+          <div class="party">D-CA · $51.7M VOL · 87% WIN RATE</div>
+          <span class="tag tag-yellow">RELOADING</span>
+          <div class="status">No new filings since Jan 23. Last moves: VST nuclear buy + GOOGL, AMZN, NVDA reloads. She is not done.</div>
+        </div>
+        <div class="congress-card">
+          <div class="name">Cleo Fields</div>
+          <div class="party">D-LA · $21.2M VOL · MOST ACTIVE HIGH-VALUE</div>
+          <span class="tag tag-green">SIGNAL CONFIRMED</span>
+          <div class="status">Bought NVDA before Trump lifted AI chip export ban to China. Most actionable recent trade in the system.</div>
+        </div>
+        <div class="congress-card">
+          <div class="name">Josh Gottheimer</div>
+          <div class="party">D-NJ · NEWLY MONITORED — 7TH POLITICIAN</div>
+          <span class="tag tag-yellow">PATTERN FORMING</span>
+          <div class="status">June 3 filing: bought MU + Lumentum (LITE) in May. Two semiconductor-adjacent names in one filing period.</div>
+        </div>
+        <div class="congress-card">
+          <div class="name">Ro Khanna</div>
+          <div class="party">D-CA · $53.4M VOL</div>
+          <span class="tag tag-red">SELLING SEMIS</span>
+          <div class="status">Actively selling ASML, Micron, Ultra Clean at 37–79% gains. Smart money taking profits.</div>
+        </div>
+        <div class="congress-card">
+          <div class="name">Jefferson Shreve</div>
+          <div class="party">R-IN · $29.3M VOL</div>
+          <span class="tag tag-gray">MONITOR</span>
+          <div class="status">High frequency, broad holdings. No new sector pattern this week.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: GOV CONTRACTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S4</span>
+      <span class="section-title">Government Contracts + Policy — Past 2 Weeks</span>
+    </div>
+    <div class="section-body">
+      <div class="alert">🎯 NDAA DEADLINE — Section 1533 mandates the Secretary of Defense establish a cross-functional AI model assessment team by June 2026. That deadline is THIS MONTH. A formal Pentagon announcement fulfilling this mandate is the most likely near-term catalyst in the system.</div>
+      <p><strong>Scale AI</strong> — Won a $500M Pentagon contract, five times its previous $100M deal. Signed directly with the Chief Digital and Artificial Intelligence Office. Microsoft, Amazon, and Google signed parallel classified-network AI deals the same week. Eight companies total now hold Pentagon AI classified network clearance: SpaceX, OpenAI, Google, NVDA, Microsoft, Amazon, Reflection, and Scale AI.</p>
+      <p><strong>Project Stargate</strong> — $500B AI infrastructure program anchored by Oracle and Microsoft remains active. Pentagon AI strategy memos released January 9 signal a commercial-first approach favoring speed over constraints.</p>
+      <p><strong>Cybersecurity</strong> — FY26 NDAA allocated $15.1B for cyberspace activities, a 4.1% increase from last year. CYBERCOM 2.0 initiative underway. Iran conflict keeping cyber threat level elevated.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5: CORRELATION -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S5</span>
+      <span class="section-title">Correlation Analysis</span>
+    </div>
+    <div class="section-body">
+      <p><span class="signal-high">MEDIUM → HIGH (Building)</span> — Pentagon AI contracts confirmed across VGT's core holdings. NDAA June deadline live. Trump Q1 holdings overlap confirmed with contract winners. Gottheimer showing semiconductor accumulation. Pelosi reloaded AI in January. The one missing piece: McCaul semiconductor buy. When that files, all three sources align simultaneously and the system hits maximum conviction.</p>
+      <p>The $1.5B S&P futures position placed five minutes before Trump's Iran peace announcement in April remains the clearest evidence that government-adjacent information flows into markets before public disclosure. This system is designed to catch the slower, legal version of that pattern.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6: MACRO -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S6</span>
+      <span class="section-title">Macro Context + Upcoming Catalysts</span>
+    </div>
+    <div class="section-body">
+      <div class="macro-grid">
+        <div class="macro-card yellow">
+          <div class="macro-label">Jobs Report (May)</div>
+          <div class="macro-value">+172K Payrolls</div>
+          <div class="macro-sub">Unemployment 4.3% · Beat expectations · Pushes Fed toward hold</div>
+        </div>
+        <div class="macro-card red">
+          <div class="macro-label">Consumer Sentiment</div>
+          <div class="macro-value">Collapsing</div>
+          <div class="macro-sub">Kraft · McDonald's · Whirlpool all issued recession-level warnings this week</div>
+        </div>
+        <div class="macro-card red">
+          <div class="macro-label">Iran Ceasefire</div>
+          <div class="macro-value">Stalled</div>
+          <div class="macro-sub">Netanyahu: "war is not over" · Oil stays elevated · Cybersecurity demand accelerating</div>
+        </div>
+        <div class="macro-card yellow">
+          <div class="macro-label">SPCX IPO</div>
+          <div class="macro-value">June 12</div>
+          <div class="macro-sub">Prices June 11 · 30% retail allocation · Watch for 20–35% post-IPO dump</div>
+        </div>
+        <div class="macro-card green">
+          <div class="macro-label">NDAA AI Deadline</div>
+          <div class="macro-value">June 2026</div>
+          <div class="macro-sub">Pentagon cross-functional AI team mandate expires THIS MONTH</div>
+        </div>
+        <div class="macro-card yellow">
+          <div class="macro-label">Semiconductor Rotation</div>
+          <div class="macro-value">Broadcom Selloff</div>
+          <div class="macro-sub">MU -6.3% · AVGO -3.8% · MRVL -8% · AMD -6.3% Friday · Rotation not thesis break</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNAL GRID -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S7</span>
+      <span class="section-title">Signal Grid — All Monitored Tickers</span>
+    </div>
+    <div class="section-body">
+      <div class="legend">
+        <div class="legend-item"><span class="dot dot-green">H</span> High / Confirmed</div>
+        <div class="legend-item"><span class="dot dot-yellow">M</span> Medium / Developing</div>
+        <div class="legend-item"><span class="dot dot-red">L</span> Low / Risk Present</div>
+        <div class="legend-item"><span class="dot dot-gray">—</span> No Signal / No Data</div>
+      </div>
+      <div class="grid-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>TICKER</th>
+              <th>TRUMP<br>BUY</th>
+              <th>TRUTH<br>SOCIAL</th>
+              <th>CONGRESS<br>BUY</th>
+              <th>CONGRESS<br>SELL</th>
+              <th>GOV<br>CONTRACT</th>
+              <th>THESIS<br>STRENGTH</th>
+              <th>MACRO<br>RISK</th>
+              <th>OVERALL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ticker">ORCL</div><div class="ticker-sub">Oracle</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">PLTR</div><div class="ticker-sub">Palantir</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">NVDA</div><div class="ticker-sub">Nvidia</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">MSFT</div><div class="ticker-sub">Microsoft</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">BAH</div><div class="ticker-sub">Booz Allen</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">CIBR</div><div class="ticker-sub">Cybersecurity ETF</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">MRVL</div><div class="ticker-sub">Marvell Tech</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">INTC</div><div class="ticker-sub">Intel</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">AMZN</div><div class="ticker-sub">Amazon</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">VST</div><div class="ticker-sub">Vistra Energy</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">MU</div><div class="ticker-sub">Micron</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">SPCX</div><div class="ticker-sub">SpaceX IPO</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">WAIT</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">NE</div><div class="ticker-sub">Noble Corp</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-yellow">WATCH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">GRAB</div><div class="ticker-sub">Grab Holdings</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">WATCH</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">BYND</div><div class="ticker-sub">Beyond Meat</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-red">WEAK</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">DELL</div><div class="ticker-sub">Dell Technologies</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-gray">MONITOR</span></td>
+            </tr>
+            <tr>
+              <td><div class="ticker">NOW</div><div class="ticker-sub">ServiceNow</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-gray">MONITOR</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="bottom-line">
+    <div class="label">Bottom Line — June 7, 2026</div>
+    <p>The Pentagon AI thesis is not breaking — it is building. Contracts are signed across every major hyperscaler. The NDAA June deadline is live this month. Iran is unresolved and elevating energy and cybersecurity signals. The semiconductor selloff this week was a rotation event driven by Broadcom earnings and a strong jobs report spooking rate traders — not a thesis break. The one unfired signal that changes the conviction level of this entire system: McCaul buys semiconductors. Watch for a Pentagon AI team announcement this month. That is the catalyst the market has not priced yet. Check back Monday.</p>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    This report is for informational purposes only. Not financial advice. All congressional trades sourced from STOCK Act filings. All Trump trades sourced from OGE 278-T filings only. Do your own research before making any investment decisions. Past signals do not guarantee future performance.
+  </div>
+
+</div>
+</body>
+</html>
