@@ -165,6 +165,10 @@
   thead th:first-child {
     text-align: left;
     padding-left: 16px;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--surface2);
   }
 
   thead th:last-child { border-right: none; }
@@ -175,6 +179,7 @@
   }
 
   tbody tr:hover { background: rgba(255,255,255,0.03); }
+  tbody tr:hover td:first-child { background: #161620; }
   tbody tr:last-child { border-bottom: none; }
 
   tbody td {
@@ -188,6 +193,11 @@
     text-align: left;
     padding-left: 16px;
     border-right: 1px solid var(--border);
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #111118;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.4);
   }
 
   tbody td:last-child { border-right: none; }
@@ -473,6 +483,7 @@
               <th>THESIS<br>STRENGTH</th>
               <th>MACRO<br>RISK</th>
               <th>OVERALL</th>
+              <th>SIGNALS<br>FIRED</th>
             </tr>
           </thead>
           <tbody>
@@ -486,8 +497,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-green">HIGH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">3</span><br>Trump Filing · Pentagon Contract · Stargate Program</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-orcl"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE 278-T filing</a> confirms a $1–5M Oracle purchase during the broad software selloff. Oracle is Pentagon-cleared for classified AI networks and serves as a core infrastructure provider for Project Stargate alongside Microsoft. The government contract signal is high because Oracle's cloud division is a direct beneficiary of federal AI modernization spending. Macro risk is medium — Oracle is down on broader tech rotation but there is no thesis deterioration.</p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-orcl"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE 278-T filing</a> confirms a $1–5M Oracle purchase during the broad software selloff. Oracle is Pentagon-cleared for classified AI networks and serves as a core infrastructure provider for Project Stargate alongside Microsoft. The government contract signal is high because Oracle's cloud division is a direct beneficiary of federal AI modernization spending. Macro risk is medium — Oracle is down on broader tech rotation but there is no thesis deterioration.</p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('pltr')">
               <td><div class="ticker">PLTR</div><div class="ticker-sub">Palantir</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -498,8 +510,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-green">HIGH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">3</span><br>Trump Filing · Truth Social · Pentagon Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-pltr"><p>Triple-confirmed signal. Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms the PLTR purchase. He then praised it on Truth Social April 10 calling it a proven war-fighting platform. The stock was near its April low of $122 at the time and has since rebounded 33%. PLTR holds classified Pentagon AI contracts and its software powers US military and intelligence operations. This is the clearest historical example of the full signal pattern firing correctly. </p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-pltr"><p>Triple-confirmed signal. Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms the PLTR purchase. He then praised it on Truth Social April 10 calling it a proven war-fighting platform. The stock was near its April low of $122 at the time and has since rebounded 33%. PLTR holds classified Pentagon AI contracts and its software powers US military and intelligence operations. This is the clearest historical example of the full signal pattern firing correctly. </p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('nvda')">
               <td><div class="ticker">NVDA</div><div class="ticker-sub">Nvidia</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -510,8 +523,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-green">HIGH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">3</span><br>Trump Filing · Congressional Filing · Pentagon Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-nvda"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms the NVDA purchase. Rep. Cleo Fields bought NVDA before Trump lifted the AI chip export ban to China — one of the strongest pre-policy congressional buys in the system. NVDA is also one of seven companies that signed a Pentagon classified AI network deal in May 2026. Jensen Huang presented new PC processor chips at Computex June 1, stock climbed 6% that session. Three independent signal sources converging on the same name. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-nvda"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms the NVDA purchase. Rep. Cleo Fields bought NVDA before Trump lifted the AI chip export ban to China — one of the strongest pre-policy congressional buys in the system. NVDA is also one of seven companies that signed a Pentagon classified AI network deal in May 2026. Jensen Huang presented new PC processor chips at Computex June 1, stock climbed 6% that session. Three independent signal sources converging on the same name. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('msft')">
               <td><div class="ticker">MSFT</div><div class="ticker-sub">Microsoft</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -522,8 +536,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-green">HIGH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">2</span><br>Trump Filing · Pentagon Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-msft"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms a $1–5M Microsoft purchase during the software selloff. MSFT signed a classified Pentagon AI network deal in May 2026 alongside Amazon and Google. Berkshire Hathaway committed $10B to Alphabet the same week, signaling institutional confidence in the AI infrastructure trade broadly. MSFT is also a Project Stargate anchor. No Truth Social mention yet — watch for one as the pattern typically follows the buy by 6–8 weeks. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-msft"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms a $1–5M Microsoft purchase during the software selloff. MSFT signed a classified Pentagon AI network deal in May 2026 alongside Amazon and Google. Berkshire Hathaway committed $10B to Alphabet the same week, signaling institutional confidence in the AI infrastructure trade broadly. MSFT is also a Project Stargate anchor. No Truth Social mention yet — watch for one as the pattern typically follows the buy by 6–8 weeks. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('bah')">
               <td><div class="ticker">BAH</div><div class="ticker-sub">Booz Allen</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -534,8 +549,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-green">H</span></td>
               <td><span class="badge badge-green">HIGH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">2</span><br>Pentagon Contract · ICE Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-bah"><p>Booz Allen Hamilton is the largest US government technology consulting firm with a $38B record contract backlog. Currently trading at P/E 11.63x versus its 5-year median of 23.9x — priced at a 42% discount to fair value. Confirmed ICE contracts in addition to Pentagon AI integration work. No Trump buy signal or congressional buy detected yet, but the government contract signal alone is high conviction given the valuation gap and backlog size. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-bah"><p>Booz Allen Hamilton is the largest US government technology consulting firm with a $38B record contract backlog. Currently trading at P/E 11.63x versus its 5-year median of 23.9x — priced at a 42% discount to fair value. Confirmed ICE contracts in addition to Pentagon AI integration work. No Trump buy signal or congressional buy detected yet, but the government contract signal alone is high conviction given the valuation gap and backlog size. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('cibr')">
               <td><div class="ticker">CIBR</div><div class="ticker-sub">Cybersecurity ETF</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -546,8 +562,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-green">H</span></td>
               <td><span class="badge badge-green">HIGH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">2</span><br>Pentagon Contract · Iran Threat Signal</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-cibr"><p>CIBR holds CrowdStrike, Palo Alto Networks, Fortinet, and Zscaler — the core cybersecurity infrastructure layer. The Iran conflict has kept cyber threat levels elevated with confirmed Iranian-linked disinformation campaigns running through June 2026. FY26 NDAA allocated $15.1B for cyberspace activities, a 4.1% increase. CYBERCOM 2.0 initiative underway. This ETF benefits directly from both the Iran threat thesis and the government cybersecurity spending mandate. <a href="https://www.federalregister.gov/documents/search?conditions%5Bterm%5D=national+defense+authorization+act+2026" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[NDAA cybersecurity ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-cibr"><p>CIBR holds CrowdStrike, Palo Alto Networks, Fortinet, and Zscaler — the core cybersecurity infrastructure layer. The Iran conflict has kept cyber threat levels elevated with confirmed Iranian-linked disinformation campaigns running through June 2026. FY26 NDAA allocated $15.1B for cyberspace activities, a 4.1% increase. CYBERCOM 2.0 initiative underway. This ETF benefits directly from both the Iran threat thesis and the government cybersecurity spending mandate. <a href="https://www.federalregister.gov/documents/search?conditions%5Bterm%5D=national+defense+authorization+act+2026" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[NDAA cybersecurity ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('mrvl')">
               <td><div class="ticker">MRVL</div><div class="ticker-sub">Marvell Tech</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -558,8 +575,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-red">L</span></td>
               <td><span class="badge badge-yellow">MEDIUM</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">3</span><br>Trump Filing · Congressional Filing · Institutional Endorsement</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-mrvl"><p>Trump bought MRVL in Q1 2026. On June 2 Jensen Huang called Marvell the next trillion-dollar company on stage at Computex — stock surged 25% that session. Rep. Salazar disclosed a MRVL buy in April (STOCK Act filing). Congress buy is medium rather than high because Salazar is not a primary monitored politician and her position size was small. Macro risk is elevated because MRVL dropped 8% in Friday's Broadcom-driven semiconductor selloff. Thesis intact but technically extended. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-mrvl"><p>Trump bought MRVL in Q1 2026. On June 2 Jensen Huang called Marvell the next trillion-dollar company on stage at Computex — stock surged 25% that session. Rep. Salazar disclosed a MRVL buy in April (STOCK Act filing). Congress buy is medium rather than high because Salazar is not a primary monitored politician and her position size was small. Macro risk is elevated because MRVL dropped 8% in Friday's Broadcom-driven semiconductor selloff. Thesis intact but technically extended. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('intc')">
               <td><div class="ticker">INTC</div><div class="ticker-sub">Intel</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -570,8 +588,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-red">L</span></td>
               <td><span class="badge badge-yellow">MEDIUM</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">2</span><br>Trump Filing · Government Stake</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-intc"><p>Trump bought INTC starting March 2026 and the administration secured a government stake. Q1 2026 earnings drove a 15% single-session surge, pushing INTC past its August 2000 record high — the administration stake is up nearly 250% from entry. Currently pulling back from a peak near $133 to around $108, forming what technicians call a bull flag. Macro risk is elevated because the semiconductor sector broadly sold off this week on Broadcom earnings. Government contract signal is medium — the stake is confirmed but no new procurement announcement this week. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-intc"><p>Trump bought INTC starting March 2026 and the administration secured a government stake. Q1 2026 earnings drove a 15% single-session surge, pushing INTC past its August 2000 record high — the administration stake is up nearly 250% from entry. Currently pulling back from a peak near $133 to around $108, forming what technicians call a bull flag. Macro risk is elevated because the semiconductor sector broadly sold off this week on Broadcom earnings. Government contract signal is medium — the stake is confirmed but no new procurement announcement this week. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('amzn')">
               <td><div class="ticker">AMZN</div><div class="ticker-sub">Amazon</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -582,8 +601,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-yellow">MEDIUM</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">3</span><br>Trump Filing · Congressional Filing · Pentagon Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-amzn"><p>Trump bought AMZN in Q1 2026. <a href="https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20033725.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Pelosi's January 23 2026 PTR filing (House Clerk)</a> shows an AMZN reload in the $500K–$1M range — congress buy is medium because this is a reload not an initial position and the 45-day lag means we are looking at January data. AWS signed a classified Pentagon AI network deal in May 2026. Consumer recession signals from Kraft, McDonald's and Whirlpool are a macro risk for AMZN's retail segment specifically, though AWS is largely insulated from consumer spending cycles. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-amzn"><p>Trump bought AMZN in Q1 2026. <a href="https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20033725.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Pelosi's January 23 2026 PTR filing (House Clerk)</a> shows an AMZN reload in the $500K–$1M range — congress buy is medium because this is a reload not an initial position and the 45-day lag means we are looking at January data. AWS signed a classified Pentagon AI network deal in May 2026. Consumer recession signals from Kraft, McDonald's and Whirlpool are a macro risk for AMZN's retail segment specifically, though AWS is largely insulated from consumer spending cycles. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('vst')">
               <td><div class="ticker">VST</div><div class="ticker-sub">Vistra Energy</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -594,8 +614,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-yellow">MEDIUM</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">1</span><br>Congressional Filing</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-vst"><p><a href="https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20033725.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Pelosi's January 23 2026 PTR filing (House Clerk)</a> discloses exercise of 50 VST call options, capturing 5,000 shares. VST is a nuclear power utility positioned directly in the path of AI data center energy demand. Meta signed a 20-year power purchase agreement with Vistra covering 2,600 megawatts from three nuclear plants in Pennsylvania and Ohio. The thesis is AI data centers need dedicated power — VST provides it. Note: VST pays dividends, which creates tax friction for some investors. Government contract signal is medium — the Meta PPA is not a federal contract but it is a large institutional validation. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Pelosi tracker ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-vst"><p><a href="https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20033725.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Pelosi's January 23 2026 PTR filing (House Clerk)</a> discloses exercise of 50 VST call options, capturing 5,000 shares. VST is a nuclear power utility positioned directly in the path of AI data center energy demand. Meta signed a 20-year power purchase agreement with Vistra covering 2,600 megawatts from three nuclear plants in Pennsylvania and Ohio. The thesis is AI data centers need dedicated power — VST provides it. Note: VST pays dividends, which creates tax friction for some investors. Government contract signal is medium — the Meta PPA is not a federal contract but it is a large institutional validation. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Pelosi tracker ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('mu')">
               <td><div class="ticker">MU</div><div class="ticker-sub">Micron</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -606,8 +627,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-red">L</span></td>
               <td><span class="badge badge-yellow">MEDIUM</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">1</span><br>Congressional Filing</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-mu"><p><a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Rep. Gottheimer's June 3 STOCK Act filing</a> confirms a MU purchase on May 21 — newly added 7th monitored politician. MU surged 30% in two weeks after that buy. Congress sell signal is low because Ro Khanna sold Micron at a 79% gain in late 2025 — smart money already took profits on the prior run. Macro risk is elevated — MU fell 6.3% Friday in the Broadcom-driven semiconductor selloff. No Trump buy or government contract signal yet. Interesting for the Gottheimer pattern but not high conviction on its own. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-mu"><p><a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Rep. Gottheimer's June 3 STOCK Act filing</a> confirms a MU purchase on May 21 — newly added 7th monitored politician. MU surged 30% in two weeks after that buy. Congress sell signal is low because Ro Khanna sold Micron at a 79% gain in late 2025 — smart money already took profits on the prior run. Macro risk is elevated — MU fell 6.3% Friday in the Broadcom-driven semiconductor selloff. No Trump buy or government contract signal yet. Interesting for the Gottheimer pattern but not high conviction on its own. <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[Congress tracker ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('spcx')">
               <td><div class="ticker">SPCX</div><div class="ticker-sub">SpaceX IPO</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -618,8 +640,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-red">L</span></td>
               <td><span class="badge badge-yellow">WAIT</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">1</span><br>Pentagon Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-spcx"><p>SpaceX is a real company with dominant launch capabilities and Starlink serving 10M+ subscribers. It is one of seven companies with a confirmed Pentagon classified AI network deal. However the IPO structure carries significant risk: $1.75T valuation on a company that lost $4.28B in Q1 2026 alone, 30% retail allocation which is three times the normal mega-cap norm, a fixed price bypassing normal bookbuilding, and insider lockup expiration in December 2026. The signal here is WAIT — real thesis, grift-like IPO mechanics. Watch for a 20–35% post-IPO dump before considering entry. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=spacex&CIK=&type=S-1&dateb=&owner=include&count=40" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[SEC S-1 filing ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-spcx"><p>SpaceX is a real company with dominant launch capabilities and Starlink serving 10M+ subscribers. It is one of seven companies with a confirmed Pentagon classified AI network deal. However the IPO structure carries significant risk: $1.75T valuation on a company that lost $4.28B in Q1 2026 alone, 30% retail allocation which is three times the normal mega-cap norm, a fixed price bypassing normal bookbuilding, and insider lockup expiration in December 2026. The signal here is WAIT — real thesis, grift-like IPO mechanics. Watch for a 20–35% post-IPO dump before considering entry. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=spacex&CIK=&type=S-1&dateb=&owner=include&count=40" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[SEC S-1 filing ↗]</a></p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('ne')">
               <td><div class="ticker">NE</div><div class="ticker-sub">Noble Corp</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -630,8 +653,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-yellow">WATCH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--muted);">0</span><br>Macro Thesis Only</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-ne"><p>Noble Corporation is an offshore driller benefiting from elevated oil prices tied to the Iran conflict. The thesis is geopolitical — if the ceasefire fails and oil stays elevated, offshore drilling demand continues. No Trump buy, no congressional signal, no government contract. Pure geopolitical macro play. Analyst price target $53 versus current ~$46. Watch signal only — no new confirmations this week.</p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-ne"><p>Noble Corporation is an offshore driller benefiting from elevated oil prices tied to the Iran conflict. The thesis is geopolitical — if the ceasefire fails and oil stays elevated, offshore drilling demand continues. No Trump buy, no congressional signal, no government contract. Pure geopolitical macro play. Analyst price target $53 versus current ~$46. Watch signal only — no new confirmations this week.</p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('grab')">
               <td><div class="ticker">GRAB</div><div class="ticker-sub">Grab Holdings</div></td>
               <td><span class="dot dot-gray">—</span></td>
@@ -642,20 +666,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-red">L</span></td>
               <td><span class="badge badge-yellow">WATCH</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--muted);">0</span><br>Fundamental Thesis Only</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-grab"><p>Grab reported +24% revenue growth and +467% net income in Q1 2026 with a $500M buyback program. Despite strong fundamentals it is trading near its 52-week low — a disconnect between price and performance that is unusual. No US government signal applies here. This is a Southeast Asian super-app play on digital economy growth in a region largely insulated from US-Iran geopolitics. Macro risk is elevated because American consumer sentiment collapse is pulling down global risk appetite broadly.</p></div></td></tr>
-            <tr class="clickable-row" onclick="toggleRow('bynd')">
-              <td><div class="ticker">BYND</div><div class="ticker-sub">Beyond Meat</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-red">WEAK</span></td>
-            </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-bynd"><p>No Trump buy, no congressional signal, no government contract. The alt-protein thesis — that red meat decline creates demand for plant-based substitutes — is under direct pressure from consumer recession signals. Kraft, McDonald's, and Whirlpool all issued recession-level warnings this week. When consumers cut discretionary spending, premium alt-protein products are among the first casualties. Thesis is weakening, not broken, but this is the lowest conviction position in the signal grid.</p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-grab"><p>Grab reported +24% revenue growth and +467% net income in Q1 2026 with a $500M buyback program. Despite strong fundamentals it is trading near its 52-week low — a disconnect between price and performance that is unusual. No US government signal applies here. This is a Southeast Asian super-app play on digital economy growth in a region largely insulated from US-Iran geopolitics. Macro risk is elevated because American consumer sentiment collapse is pulling down global risk appetite broadly.</p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('dell')">
               <td><div class="ticker">DELL</div><div class="ticker-sub">Dell Technologies</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -666,8 +679,9 @@
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-gray">MONITOR</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">2</span><br>Trump Filing · White House Endorsement</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-dell"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms a $1–5M Dell purchase in February 2026. He endorsed Dell hardware at a White House event in early May — a confirmed two-factor signal that already fired. Dell supplies technology to federal agencies and benefited from the AI infrastructure buildout. Currently in monitor status — signal played out, no new catalyst this week. Watch for a new government contract announcement or Truth Social mention to re-elevate.</p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-dell"><p>Trump's <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:inherit;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">Q1 2026 OGE filing</a> confirms a $1–5M Dell purchase in February 2026. He endorsed Dell hardware at a White House event in early May — a confirmed two-factor signal that already fired. Dell supplies technology to federal agencies and benefited from the AI infrastructure buildout. Currently in monitor status — signal played out, no new catalyst this week. Watch for a new government contract announcement or Truth Social mention to re-elevate.</p></div></td></tr>
             <tr class="clickable-row" onclick="toggleRow('now')">
               <td><div class="ticker">NOW</div><div class="ticker-sub">ServiceNow</div></td>
               <td><span class="dot dot-green">H</span></td>
@@ -678,8 +692,9 @@
               <td><span class="dot dot-green">H</span></td>
               <td><span class="dot dot-yellow">M</span></td>
               <td><span class="badge badge-gray">MONITOR</span></td>
+              <td style="font-family:'Space Mono',monospace;font-size:10px;color:#c8c8d8;line-height:1.6;min-width:140px;"><span style="font-size:12px;font-weight:700;color:var(--accent);">2</span><br>Trump Filing · Federal Platform Contract</td>
             </tr>
-            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-now"><p>Trump bought ServiceNow in Q1 2026 during the software selloff. ServiceNow is the dominant federal agency IT workflow platform with a $1B Now Assist AI ACV target for 2026. The government contract signal is medium because no new contract was announced this week — the existing federal agency relationship is the signal driver. Strong thesis, no new catalyst. Monitor for a new federal contract announcement or Truth Social mention. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
+            <tr class="expand-detail-row"><td colspan="10"><div class="expand-detail-inner" id="expand-now"><p>Trump bought ServiceNow in Q1 2026 during the software selloff. ServiceNow is the dominant federal agency IT workflow platform with a $1B Now Assist AI ACV target for 2026. The government contract signal is medium because no new contract was announced this week — the existing federal agency relationship is the signal driver. Strong thesis, no new catalyst. Monitor for a new federal contract announcement or Truth Social mention. <a href="https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index/5326D3AF5BE7C25385258DF7002DD1B7/$FILE/Trump,%20Donald%20J.-05.08.2026-278T.pdf" target="_blank" rel="noopener" style="color:var(--accent);font-size:11px;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(232,255,71,0.3);text-decoration:none;">[OGE filing ↗]</a></p></div></td></tr>
           </tbody>
         </table>
       </div>
@@ -937,6 +952,11 @@
   <div class="bottom-line">
     <div class="label">Bottom Line — June 7, 2026</div>
     <p>The Pentagon AI thesis is not breaking — it is building. Contracts are signed across every major hyperscaler. The NDAA June deadline is live this month. Iran is unresolved and elevating energy and cybersecurity signals. The semiconductor selloff this week was a rotation event driven by Broadcom earnings and a strong jobs report spooking rate traders — not a thesis break. The one unfired signal that changes the conviction level of this entire system: McCaul buys semiconductors. Watch for a Pentagon AI team announcement this month. That is the catalyst the market has not priced yet. Check back Monday.</p>
+  </div>
+
+  <!-- START DATE -->
+  <div style="text-align:center;padding:16px 20px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:0;">
+    Signal tracking commenced June 2, 2026. All ratings reflect publicly available data collected from that date forward. Historical data referenced prior to this date is provided for contextual validation only and does not represent active monitoring.
   </div>
 
   <!-- DISCLAIMER -->
