@@ -419,6 +419,17 @@
     body { padding: 20px 12px; }
     .header h1 { font-size: 22px; }
   }
+
+  tbody tr.clickable-row { cursor: pointer; }
+  tbody tr.clickable-row:hover { background: rgba(232,255,71,0.04); }
+  tr.expand-detail-row td { padding: 0; border-right: none; }
+  .expand-detail-inner { display: none; padding: 16px 20px; background: rgba(255,255,255,0.03); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .expand-detail-inner.open { display: block; }
+  .expand-detail-inner p { font-size: 13px; color: #c8c8d8; line-height: 1.7; margin-bottom: 10px; }
+  .expand-detail-inner p:last-child { margin-bottom: 0; }
+  .full-analysis-link { display: inline-block; margin-top: 8px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(232,255,71,0.3); padding-bottom: 1px; }
+  .full-analysis-link:hover { border-bottom-color: var(--accent); }
+  .row-hint { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); padding: 6px 0 10px 0; letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -429,6 +440,355 @@
     <div class="label">Signal Intelligence Report</div>
     <h1>Trump + Congress<br>Signal Monitor</h1>
     <div class="date">Saturday, June 7, 2026 &nbsp;·&nbsp; Weekly Wrap + Weekend Update</div>
+  </div>
+
+  <!-- HERO DESCRIPTION -->
+  <div style="padding: 24px 0 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
+    <p style="font-size: 14px; color: #c8c8d8; line-height: 1.8; max-width: 800px;">This monitor cross-references four publicly available data sources — presidential SEC filings, congressional STOCK Act disclosures, Pentagon contract announcements, and Truth Social — to identify signal patterns before they are priced into the broader market. Each ticker is rated independently across signal categories and assigned an overall conviction level based on how many independent sources align. The thesis: when the President buys a stock, a congressional trader buys the same sector, and the Pentagon awards a contract to that company within the same window, that three-factor convergence has historically preceded significant price movement. The two grids below reflect the current state of that analysis — the Signal Grid tracks conviction strength, the Stability Grid tracks defensive resilience for investors looking to hedge.</p>
+  </div>
+
+  <!-- SIGNAL GRID -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S7</span>
+      <span class="section-title">Signal Grid — All Monitored Tickers</span>
+    </div>
+    <div class="section-body">
+      <div class="legend">
+        <div class="legend-item"><span class="dot dot-green">H</span> High / Confirmed</div>
+        <div class="legend-item"><span class="dot dot-yellow">M</span> Medium / Developing</div>
+        <div class="legend-item"><span class="dot dot-red">L</span> Low / Risk Present</div>
+        <div class="legend-item"><span class="dot dot-gray">—</span> No Signal / No Data</div>
+      </div>
+      <div class="grid-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>TICKER</th>
+              <th>TRUMP<br>BUY</th>
+              <th>TRUTH<br>SOCIAL</th>
+              <th>CONGRESS<br>BUY</th>
+              <th>CONGRESS<br>SELL</th>
+              <th>GOV<br>CONTRACT</th>
+              <th>THESIS<br>STRENGTH</th>
+              <th>MACRO<br>RISK</th>
+              <th>OVERALL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="clickable-row" onclick="toggleRow('orcl')">
+              <td><div class="ticker">ORCL</div><div class="ticker-sub">Oracle</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-orcl"><p>Trump bought $1–5M of Oracle in Q1 2026 during the broad software selloff. Oracle is Pentagon-cleared for classified AI networks and serves as a core infrastructure provider for Project Stargate alongside Microsoft. The government contract signal is high because Oracle's cloud division is a direct beneficiary of federal AI modernization spending. Macro risk is medium — Oracle is down on broader tech rotation but there is no thesis deterioration.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('pltr')">
+              <td><div class="ticker">PLTR</div><div class="ticker-sub">Palantir</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-pltr"><p>Triple-confirmed signal. Trump bought PLTR in Q1 2026, then praised it on Truth Social April 10 calling it a proven war-fighting platform. The stock was near its April low of $122 at the time and has since rebounded 33%. PLTR holds classified Pentagon AI contracts and its software powers US military and intelligence operations. This is the clearest historical example of the full signal pattern firing correctly.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('nvda')">
+              <td><div class="ticker">NVDA</div><div class="ticker-sub">Nvidia</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-nvda"><p>Trump bought NVDA in Q1 2026. Rep. Cleo Fields bought NVDA before Trump lifted the AI chip export ban to China — one of the strongest pre-policy congressional buys in the system. NVDA is also one of seven companies that signed a Pentagon classified AI network deal in May 2026. Jensen Huang presented new PC processor chips at Computex June 1, stock climbed 6% that session. Three independent signal sources converging on the same name.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('msft')">
+              <td><div class="ticker">MSFT</div><div class="ticker-sub">Microsoft</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-msft"><p>Trump bought $1–5M of Microsoft in Q1 2026 during the software selloff. MSFT signed a classified Pentagon AI network deal in May 2026 alongside Amazon and Google. Berkshire Hathaway committed $10B to Alphabet the same week, signaling institutional confidence in the AI infrastructure trade broadly. MSFT is also a Project Stargate anchor. No Truth Social mention yet — watch for one as the pattern typically follows the buy by 6–8 weeks.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('bah')">
+              <td><div class="ticker">BAH</div><div class="ticker-sub">Booz Allen</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-bah"><p>Booz Allen Hamilton is the largest US government technology consulting firm with a $38B record contract backlog. Currently trading at P/E 11.63x versus its 5-year median of 23.9x — priced at a 42% discount to fair value. Confirmed ICE contracts in addition to Pentagon AI integration work. No Trump buy signal or congressional buy detected yet, but the government contract signal alone is high conviction given the valuation gap and backlog size.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('cibr')">
+              <td><div class="ticker">CIBR</div><div class="ticker-sub">Cybersecurity ETF</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="badge badge-green">HIGH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-cibr"><p>CIBR holds CrowdStrike, Palo Alto Networks, Fortinet, and Zscaler — the core cybersecurity infrastructure layer. The Iran conflict has kept cyber threat levels elevated with confirmed Iranian-linked disinformation campaigns running through June 2026. FY26 NDAA allocated $15.1B for cyberspace activities, a 4.1% increase. CYBERCOM 2.0 initiative underway. This ETF benefits directly from both the Iran threat thesis and the government cybersecurity spending mandate.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('mrvl')">
+              <td><div class="ticker">MRVL</div><div class="ticker-sub">Marvell Tech</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-mrvl"><p>Trump bought MRVL in Q1 2026. On June 2 Jensen Huang called Marvell the next trillion-dollar company on stage at Computex — stock surged 25% that session. Rep. Salazar disclosed a MRVL buy in April (STOCK Act filing). Congress buy is medium rather than high because Salazar is not a primary monitored politician and her position size was small. Macro risk is elevated because MRVL dropped 8% in Friday's Broadcom-driven semiconductor selloff. Thesis intact but technically extended.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('intc')">
+              <td><div class="ticker">INTC</div><div class="ticker-sub">Intel</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-intc"><p>Trump bought INTC starting March 2026 and the administration secured a government stake. Q1 2026 earnings drove a 15% single-session surge, pushing INTC past its August 2000 record high — the administration stake is up nearly 250% from entry. Currently pulling back from a peak near $133 to around $108, forming what technicians call a bull flag. Macro risk is elevated because the semiconductor sector broadly sold off this week on Broadcom earnings. Government contract signal is medium — the stake is confirmed but no new procurement announcement this week.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('amzn')">
+              <td><div class="ticker">AMZN</div><div class="ticker-sub">Amazon</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-amzn"><p>Trump bought AMZN in Q1 2026. Pelosi reloaded AMZN in January 2026 in the $500K–$1M range — congress buy is medium because this is a reload not an initial position and the 45-day lag means we are looking at January data. AWS signed a classified Pentagon AI network deal in May 2026. Consumer recession signals from Kraft, McDonald's and Whirlpool are a macro risk for AMZN's retail segment specifically, though AWS is largely insulated from consumer spending cycles.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('vst')">
+              <td><div class="ticker">VST</div><div class="ticker-sub">Vistra Energy</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-vst"><p>Pelosi exercised 50 VST call options in January 2026, capturing 5,000 shares. VST is a nuclear power utility positioned directly in the path of AI data center energy demand. Meta signed a 20-year power purchase agreement with Vistra covering 2,600 megawatts from three nuclear plants in Pennsylvania and Ohio. The thesis is AI data centers need dedicated power — VST provides it. Note: VST pays dividends, which creates tax friction for some investors. Government contract signal is medium — the Meta PPA is not a federal contract but it is a large institutional validation.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('mu')">
+              <td><div class="ticker">MU</div><div class="ticker-sub">Micron</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">MEDIUM</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-mu"><p>Rep. Gottheimer bought MU on May 21 — newly added 7th monitored politician, STOCK Act filing confirmed. MU surged 30% in two weeks after that buy. Congress sell signal is low because Ro Khanna sold Micron at a 79% gain in late 2025 — smart money already took profits on the prior run. Macro risk is elevated — MU fell 6.3% Friday in the Broadcom-driven semiconductor selloff. No Trump buy or government contract signal yet. Interesting for the Gottheimer pattern but not high conviction on its own.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('spcx')">
+              <td><div class="ticker">SPCX</div><div class="ticker-sub">SpaceX IPO</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">WAIT</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-spcx"><p>SpaceX is a real company with dominant launch capabilities and Starlink serving 10M+ subscribers. It is one of seven companies with a confirmed Pentagon classified AI network deal. However the IPO structure carries significant risk: $1.75T valuation on a company that lost $4.28B in Q1 2026 alone, 30% retail allocation which is three times the normal mega-cap norm, a fixed price bypassing normal bookbuilding, and insider lockup expiration in December 2026. The signal here is WAIT — real thesis, grift-like IPO mechanics. Watch for a 20–35% post-IPO dump before considering entry.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('ne')">
+              <td><div class="ticker">NE</div><div class="ticker-sub">Noble Corp</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-yellow">WATCH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-ne"><p>Noble Corporation is an offshore driller benefiting from elevated oil prices tied to the Iran conflict. The thesis is geopolitical — if the ceasefire fails and oil stays elevated, offshore drilling demand continues. No Trump buy, no congressional signal, no government contract. Pure geopolitical macro play. Analyst price target $53 versus current ~$46. Watch signal only — no new confirmations this week.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('grab')">
+              <td><div class="ticker">GRAB</div><div class="ticker-sub">Grab Holdings</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-yellow">WATCH</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-grab"><p>Grab reported +24% revenue growth and +467% net income in Q1 2026 with a $500M buyback program. Despite strong fundamentals it is trading near its 52-week low — a disconnect between price and performance that is unusual. No US government signal applies here. This is a Southeast Asian super-app play on digital economy growth in a region largely insulated from US-Iran geopolitics. Macro risk is elevated because American consumer sentiment collapse is pulling down global risk appetite broadly.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('bynd')">
+              <td><div class="ticker">BYND</div><div class="ticker-sub">Beyond Meat</div></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="dot dot-red">L</span></td>
+              <td><span class="badge badge-red">WEAK</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-bynd"><p>No Trump buy, no congressional signal, no government contract. The alt-protein thesis — that red meat decline creates demand for plant-based substitutes — is under direct pressure from consumer recession signals. Kraft, McDonald's, and Whirlpool all issued recession-level warnings this week. When consumers cut discretionary spending, premium alt-protein products are among the first casualties. Thesis is weakening, not broken, but this is the lowest conviction position in the signal grid.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('dell')">
+              <td><div class="ticker">DELL</div><div class="ticker-sub">Dell Technologies</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-gray">MONITOR</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-dell"><p>Trump bought $1–5M of Dell in February 2026 and endorsed Dell hardware at a White House event in early May — a confirmed two-factor signal that already fired. Dell supplies technology to federal agencies and benefited from the AI infrastructure buildout. Currently in monitor status because the signal has already played out and no new catalyst has emerged this week. Watch for a new government contract announcement or Truth Social mention to re-elevate.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('now')">
+              <td><div class="ticker">NOW</div><div class="ticker-sub">ServiceNow</div></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-gray">—</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">H</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="badge badge-gray">MONITOR</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="9"><div class="expand-detail-inner" id="expand-now"><p>Trump bought ServiceNow in Q1 2026 during the software selloff. ServiceNow is the dominant federal agency IT workflow platform with a $1B Now Assist AI ACV target for 2026. The government contract signal is medium because no new contract was announced this week — the existing federal agency relationship is the signal driver. Strong thesis, no new catalyst. Monitor for a new federal contract announcement or Truth Social mention.</p></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- STABILITY GRID -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">S8</span>
+      <span class="section-title">Stability Grid — Defensive Positions</span>
+    </div>
+    <div class="section-body">
+      <p>For investors looking to hedge or stabilize against current market conditions — consumer recession signals, Iran uncertainty, tech rotation, and rate pressure. These names are evaluated not for signal strength but for resilience. Green means stable in the current environment. Yellow means moderate exposure. Red means elevated instability risk.</p>
+      <div class="legend">
+        <div class="legend-item"><span class="dot dot-green">S</span> Stable</div>
+        <div class="legend-item"><span class="dot dot-yellow">M</span> Moderate</div>
+        <div class="legend-item"><span class="dot dot-red">U</span> Unstable</div>
+        <div class="legend-item"><span class="dot dot-gray">—</span> No Data</div>
+      </div>
+      <div class="grid-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>TICKER</th>
+              <th>VOLATILITY</th>
+              <th>MARKET<br>CORR.</th>
+              <th>INFLATION<br>HEDGE</th>
+              <th>DOWNSIDE<br>PROTECT.</th>
+              <th>IRAN<br>EXPOSURE</th>
+              <th>OVERALL<br>STABILITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <tr class="clickable-row" onclick="toggleRow('brkb')">
+              <td><div class="ticker">BRK.B</div><div class="ticker-sub">Berkshire Hathaway</div></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-green">MOST STABLE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-brkb"><p>Berkshire holds massive cash reserves, pays zero dividends, has zero tech concentration, and is run on a value discipline that has outperformed in every major downturn. In the current environment — consumer recession signals, Iran uncertainty, tech rotation — BRK.B is the single cleanest defensive anchor. It was up on Friday when the rest of the market bled. Low volatility, low market correlation, strong inflation protection through its diversified business holdings.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('rsp')">
+              <td><div class="ticker">RSP</div><div class="ticker-sub">Equal Weight S&P 500</div></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-green">STABLE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-rsp"><p>RSP weights all 500 S&P companies equally instead of by market cap, which means the Magnificent 7 don't dominate the way they do in VOO or SPY. In a rotation environment where mega-cap tech is selling off, RSP holds up better because its exposure is spread across industrials, healthcare, financials, and consumer staples. Market correlation is moderate because it still tracks the S&P 500 broadly. Inflation hedge is moderate — not a direct commodity play but diversified enough to absorb inflation across sectors.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('cgw')">
+              <td><div class="ticker">CGW</div><div class="ticker-sub">Water Infrastructure ETF</div></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-green">STABLE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-cgw"><p>Water infrastructure is one of the most recession-resistant sectors in existence. People need water regardless of consumer sentiment, Iran negotiations, or semiconductor earnings. CGW holds utilities and infrastructure companies tied to water treatment, distribution, and management. Low volatility, low market correlation, strong inflation hedge because water rates typically adjust with inflation. No Iran exposure. Clean defensive position for any macro environment.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('pho')">
+              <td><div class="ticker">PHO</div><div class="ticker-sub">Water Resources ETF</div></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-green">STABLE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-pho"><p>PHO is similar to CGW but with a slightly broader mandate covering water resource management including treatment technology and conservation. Both CGW and PHO together provide redundant exposure to the long-term water scarcity megatrend while functioning as defensive anchors in volatile markets. The thesis is secular — global water scarcity is a 50-year tailwind regardless of short-term market conditions.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('bah-stab')">
+              <td><div class="ticker">BAH</div><div class="ticker-sub">Booz Allen Hamilton</div></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-green">STABLE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-bah-stab"><p>BAH earns most of its revenue from long-term government contracts that do not fluctuate with consumer sentiment or market cycles. Its $38B backlog is locked-in future revenue. In a consumer recession, government IT spending does not stop — it often accelerates as agencies modernize. Low volatility relative to the broader market, low correlation to consumer cycle. Inflation hedge is moderate because government contracts are renegotiated periodically but not indexed to inflation in real time.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('cibr-stab')">
+              <td><div class="ticker">CIBR</div><div class="ticker-sub">Cybersecurity ETF</div></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-yellow">M</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-yellow">MODERATE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-cibr-stab"><p>CIBR is more volatile than the other stability grid names because it holds growth-oriented cybersecurity companies that trade with the tech sector to some degree. However its Iran exposure rating is stable — elevated cyber threat from the conflict actually increases demand for CIBR's holdings. It is not purely defensive but it is a reasonable moderate stability position for investors who want both defensive characteristics and a geopolitical catalyst. More volatile than water or BRK.B but more directionally certain than broad tech.</p></div></td></tr>
+            <tr class="clickable-row" onclick="toggleRow('gld')">
+              <td><div class="ticker">GLD</div><div class="ticker-sub">Gold ETF (reference)</div></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="dot dot-green">S</span></td>
+              <td><span class="badge badge-green">MOST STABLE</span></td>
+            </tr>
+            <tr class="expand-detail-row"><td colspan="6"><div class="expand-detail-inner" id="expand-gld"><p>Gold is listed here as a reference point, not a system signal. No congressional buy, no Trump holding, no government contract. It is included because in the current environment — consumer recession fears, Iran war, dollar uncertainty, rate pressure — gold historically performs well as a store of value. GLD is the largest gold ETF and the cleanest way to access the trade. If you are looking to hedge against everything on this page going wrong simultaneously, GLD is the classical answer.</p></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <!-- SECTION 1: TRUTH SOCIAL -->
@@ -573,228 +933,6 @@
     </div>
   </div>
 
-  <!-- SIGNAL GRID -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">S7</span>
-      <span class="section-title">Signal Grid — All Monitored Tickers</span>
-    </div>
-    <div class="section-body">
-      <div class="legend">
-        <div class="legend-item"><span class="dot dot-green">H</span> High / Confirmed</div>
-        <div class="legend-item"><span class="dot dot-yellow">M</span> Medium / Developing</div>
-        <div class="legend-item"><span class="dot dot-red">L</span> Low / Risk Present</div>
-        <div class="legend-item"><span class="dot dot-gray">—</span> No Signal / No Data</div>
-      </div>
-      <div class="grid-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>TICKER</th>
-              <th>TRUMP<br>BUY</th>
-              <th>TRUTH<br>SOCIAL</th>
-              <th>CONGRESS<br>BUY</th>
-              <th>CONGRESS<br>SELL</th>
-              <th>GOV<br>CONTRACT</th>
-              <th>THESIS<br>STRENGTH</th>
-              <th>MACRO<br>RISK</th>
-              <th>OVERALL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><div class="ticker">ORCL</div><div class="ticker-sub">Oracle</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-green">HIGH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">PLTR</div><div class="ticker-sub">Palantir</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-green">HIGH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">NVDA</div><div class="ticker-sub">Nvidia</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-green">HIGH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">MSFT</div><div class="ticker-sub">Microsoft</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-green">HIGH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">BAH</div><div class="ticker-sub">Booz Allen</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="badge badge-green">HIGH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">CIBR</div><div class="ticker-sub">Cybersecurity ETF</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="badge badge-green">HIGH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">MRVL</div><div class="ticker-sub">Marvell Tech</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-yellow">MEDIUM</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">INTC</div><div class="ticker-sub">Intel</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-yellow">MEDIUM</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">AMZN</div><div class="ticker-sub">Amazon</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-yellow">MEDIUM</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">VST</div><div class="ticker-sub">Vistra Energy</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-yellow">MEDIUM</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">MU</div><div class="ticker-sub">Micron</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-yellow">MEDIUM</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">SPCX</div><div class="ticker-sub">SpaceX IPO</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-yellow">WAIT</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">NE</div><div class="ticker-sub">Noble Corp</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-yellow">WATCH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">GRAB</div><div class="ticker-sub">Grab Holdings</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-yellow">WATCH</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">BYND</div><div class="ticker-sub">Beyond Meat</div></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="dot dot-red">L</span></td>
-              <td><span class="badge badge-red">WEAK</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">DELL</div><div class="ticker-sub">Dell Technologies</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-gray">MONITOR</span></td>
-            </tr>
-            <tr>
-              <td><div class="ticker">NOW</div><div class="ticker-sub">ServiceNow</div></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-gray">—</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="dot dot-green">H</span></td>
-              <td><span class="dot dot-yellow">M</span></td>
-              <td><span class="badge badge-gray">MONITOR</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
   <!-- BOTTOM LINE -->
   <div class="bottom-line">
     <div class="label">Bottom Line — June 7, 2026</div>
@@ -803,9 +941,37 @@
 
   <!-- DISCLAIMER -->
   <div class="disclaimer">
-    This report is for informational purposes only. Not financial advice. All congressional trades sourced from STOCK Act filings. All Trump trades sourced from OGE 278-T filings only. Do your own research before making any investment decisions. Past signals do not guarantee future performance.
+    IMPORTANT LEGAL NOTICE — PLEASE READ IN FULL BEFORE ACTING ON ANY INFORMATION CONTAINED IN THIS PUBLICATION
+
+    This publication, including all signal grids, analysis, commentary, ticker references, stability assessments, congressional trade summaries, government contract summaries, and any other content contained herein (collectively, the "Content"), is produced and distributed exclusively for entertainment and general educational purposes. The Content does not constitute, and shall not under any circumstances be construed to constitute, investment advice, financial advice, trading advice, legal advice, tax advice, or any other form of professional advice of any kind whatsoever. The publisher of this Content is not a registered investment adviser, broker-dealer, financial planner, tax professional, attorney, or any other licensed or registered financial or legal professional under the laws of the United States, any individual state, or any foreign jurisdiction. Nothing in this Content creates or implies any advisory, fiduciary, or professional relationship of any kind between the publisher and any reader, subscriber, viewer, or recipient.
+
+    THIS CONTENT IS PRODUCED IN PART WITH THE ASSISTANCE OF ARTIFICIAL INTELLIGENCE TECHNOLOGY, SPECIFICALLY CLAUDE, AN AI SYSTEM DEVELOPED BY ANTHROPIC, PBC. The use of AI-assisted research and content generation does not alter the entertainment and educational nature of this publication, nor does it create any warranty, express or implied, regarding the accuracy, completeness, timeliness, or fitness for any particular purpose of any information contained herein. AI-generated content is subject to error, hallucination, misinterpretation of source data, and other limitations inherent to large language model systems. Readers are expressly cautioned not to rely on AI-assisted analysis as the sole or primary basis for any financial decision.
+
+    ALL DATA, ANALYSIS, AND SIGNAL ASSESSMENTS CONTAINED IN THIS PUBLICATION ARE DERIVED EXCLUSIVELY FROM PUBLICLY AVAILABLE INFORMATION. Sources include but are not limited to: United States Securities and Exchange Commission EDGAR database filings including Form 278-T Periodic Transaction Reports filed pursuant to the Ethics in Government Act of 1978 as amended; financial disclosure reports filed by Members of Congress and their spouses pursuant to the Stop Trading on Congressional Knowledge Act of 2012 (Public Law 112-105, 126 Stat. 291), as amended; official press releases and contract award announcements published by agencies and offices of the United States Department of Defense including the Chief Digital and Artificial Intelligence Office; official announcements published at SAM.gov, the Federal Register, and agency-specific procurement portals; publicly available earnings reports, investor presentations, and SEC filings including Forms 10-K, 10-Q, 8-K, and S-1; and publicly available news reporting from established financial media organizations. The act of aggregating, cross-referencing, analyzing, and publishing correlations drawn from these publicly available sources constitutes lawful expressive activity protected under the First Amendment to the United States Constitution, Article I thereof, which prohibits Congress from making any law abridging the freedom of speech or of the press. The publication of observations, analysis, and commentary regarding the publicly disclosed financial activities of public officials and public companies is a form of expression protected by settled First Amendment jurisprudence including but not limited to the principles articulated in New York Times Co. v. Sullivan, 376 U.S. 254 (1964), Hustler Magazine, Inc. v. Falwell, 485 U.S. 46 (1988), Snyder v. Phelps, 562 U.S. 443 (2011), and their progeny. Nothing in this publication constitutes market manipulation, securities fraud, or any other violation of federal or state securities laws. No material non-public information has been used in the preparation of this Content. The publisher expressly disclaims any intent to manipulate, defraud, or mislead any person.
+
+    THE PUBLISHER IS NOT A FINANCIAL ADVISER. THIS IS NOT FINANCIAL ADVICE. THE PUBLISHER IS NOT A FINANCIAL ADVISER. THIS IS NOT FINANCIAL ADVICE. THE PUBLISHER IS NOT A FINANCIAL ADVISER. THIS IS NOT FINANCIAL ADVICE. These statements are repeated deliberately and intentionally, not as a stylistic choice, but as an express, unambiguous, and repeated disclaimer of any advisory capacity or responsibility. Any person who reads this Content and interprets it as financial advice does so contrary to the explicit, repeated, and unambiguous warnings contained herein and assumes all risk of any financial loss resulting therefrom.
+
+    RISK DISCLOSURE: Investing in securities involves substantial risk of loss, including the possible loss of the entire amount invested. Past performance of any security, index, signal pattern, or analytical methodology described or referenced in this publication is not indicative of future results. The signal assessments, stability ratings, and analytical frameworks presented in this publication are the subjective interpretations of publicly available data by an unnamed publisher using AI-assisted research tools and do not represent objective financial analysis, valuation, or recommendation. Market conditions change rapidly and without warning. Information that was accurate at the time of publication may become inaccurate due to changes in market conditions, company circumstances, government policy, geopolitical events, or other factors beyond the publisher's knowledge or control. The publisher undertakes no obligation to update, correct, or supplement any information contained in this publication following its initial release.
+
+    CONGRESSIONAL TRADING DISCLOSURE: The congressional trading data referenced in this publication is derived from disclosures made pursuant to the STOCK Act of 2012. Such disclosures are subject to filing delays of up to 45 days from the date of the underlying transaction, are reported in ranges rather than exact amounts, and may be filed by or on behalf of a member of Congress, their spouse, or dependent children. The identification of a pattern, correlation, or potential signal in congressional trading data does not constitute an allegation of wrongdoing, insider trading, market manipulation, or violation of any law by any member of Congress or their family members. All congressional trading activity described herein was legally disclosed pursuant to applicable law. The publisher makes no representation that any observed pattern will continue, repeat, or produce any particular investment outcome.
+
+    PRESIDENTIAL FINANCIAL DISCLOSURE: The presidential financial disclosure data referenced in this publication is derived from reports filed pursuant to the Ethics in Government Act of 1978, as amended, with the United States Office of Government Ethics. Such reports are public records. The identification of holdings or transactions in such reports does not constitute an allegation of wrongdoing, conflict of interest, or violation of any law by the President of the United States, the First Lady, or any member of the Executive Branch. The publisher makes no representation regarding the motivation behind any disclosed transaction, the accuracy of any disclosed amount range, or the likelihood that any observed pattern will produce any particular investment outcome.
+
+    LIMITATION OF LIABILITY: To the maximum extent permitted by applicable law, the publisher, its affiliates, agents, contributors, AI technology providers, and any other party involved in the production or distribution of this Content expressly disclaim all liability for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages arising from or related to any use of, reliance upon, or action taken based on this Content, including but not limited to investment losses, lost profits, lost data, business interruption, or any other pecuniary or non-pecuniary harm. This limitation of liability applies regardless of the legal theory asserted, whether in contract, tort, strict liability, or otherwise, and regardless of whether the publisher has been advised of the possibility of such damages.
+
+    BY READING THIS CONTENT YOU ACKNOWLEDGE THAT: (1) you have read and understood this disclaimer in full; (2) you understand that this Content is for entertainment and educational purposes only and does not constitute financial advice of any kind; (3) you understand that the publisher is not a licensed financial adviser, broker-dealer, or any other financial professional; (4) you understand that all investment decisions you make are solely your own responsibility; (5) you understand that you may lose money investing in securities referenced or discussed in this Content; (6) you agree to consult a licensed financial professional before making any investment decision; and (7) you release the publisher from any and all liability arising from your use of this Content.
+
+    All rights reserved. All publicly sourced data reproduced or summarized herein remains the property of its respective governmental or institutional source. This publication does not claim ownership of any underlying public data. First Amendment protections apply to the original expressive content, analysis, and commentary contained herein.
   </div>
 
 </div>
+<script>
+function toggleRow(id) {
+  var el = document.getElementById('expand-' + id);
+  if (el) {
+    el.classList.toggle('open');
+  }
+}
+</script>
 </body>
 </html>
