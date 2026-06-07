@@ -411,6 +411,63 @@
     color: #c8c8d8;
   }
 
+  .congress-card { cursor: pointer; transition: border-color 0.2s; }
+  .congress-card:hover { border-color: rgba(232,255,71,0.3); }
+  .congress-expand {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .congress-expand.open { display: block; }
+  .congress-expand-section {
+    margin-bottom: 10px;
+  }
+  .congress-expand-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .congress-expand-body {
+    font-size: 12px;
+    color: #c8c8d8;
+    line-height: 1.7;
+  }
+  .congress-expand-body a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232,255,71,0.3);
+  }
+  .congress-source {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .congress-tap-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+  .congress-trades { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .congress-trades.open { display: block; }
+  .trade-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 11px; gap: 8px; }
+  .trade-row:last-of-type { border-bottom: none; }
+  .trade-ticker { font-family: 'Space Mono', monospace; font-weight: 700; color: #fff; min-width: 48px; }
+  .trade-buy { color: var(--green); font-family: 'Space Mono', monospace; font-size: 10px; }
+  .trade-sell { color: var(--red); font-family: 'Space Mono', monospace; font-size: 10px; }
+  .trade-amount { color: var(--muted); font-family: 'Space Mono', monospace; font-size: 10px; }
+  .trade-source { font-size: 9px; color: var(--muted); margin-top: 8px; line-height: 1.6; font-family: 'Space Mono', monospace; border-top: 1px solid var(--border); padding-top: 6px; }
+  .trade-source a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(232,255,71,0.3); }
+  .card-hint { font-size: 9px; color: var(--muted); font-family: 'Space Mono', monospace; margin-top: 8px; }
+
   .tag {
     display: inline-block;
     padding: 2px 8px;
@@ -833,41 +890,143 @@
     <div class="section-body">
       <div class="alert">⚡ PRIORITY WATCH — McCaul has still NOT bought semiconductors. This is the single highest-conviction confirmation signal in the system. When it fires, treat it as a five-alarm alert. System now monitors 15 politicians across 3 tiers — Tier 1 and Tier 2 checked daily, Tier 3 weekly.</div>
       <div class="congress-grid">
-        <div class="congress-card">
+        <div class="congress-card" onclick="toggleCongress('mccaul')">
           <div class="name">Michael McCaul</div>
           <div class="party">R-TX · SEMICONDUCTOR CAUCUS CHAIR · $57.7M VOL</div>
           <span class="tag tag-red">NO SEMI BUY</span>
           <div class="status">Zero semiconductor purchases disclosed. Watching every filing.</div>
+          <div class="congress-tap-hint">▼ tap for detail</div>
+          <div class="congress-expand" id="congress-mccaul">
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Last Known Disclosed Trades</div>
+              <div class="congress-expand-body">No semiconductor purchases in any filing period. Most recent disclosed trades include Valvoline, MSA Safety, Louisiana-Pacific — non-sector buys filed December 2024. Prior sales included ASML (+31%), FirstCash (+12%), Tapestry (+48%). Watching for any semiconductor, defense tech, or AI hardware position.</div>
+              <div class="congress-source">Source: <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">House Clerk STOCK Act filings</a> · Last checked June 7, 2026</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Committee Jurisdiction</div>
+              <div class="congress-expand-body">Semiconductor Caucus Chair · Former House Foreign Affairs Chair · Former House Homeland Security Chair. Any semiconductor or AI hardware buy overlaps directly with committee jurisdiction — automatic HIGH SIGNAL per system rules. Not seeking reelection 2026.</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Top Industry Donors (Career · FEC Data)</div>
+              <div class="congress-expand-body">Defense Aerospace · Oil and Gas · Telecommunications · Real Estate · Commercial Banks. Primary PAC contributors include defense contractors and energy sector. Note: despite Semiconductor Caucus chairmanship, semiconductor industry PAC contributions are not among his top career donors — making any personal semiconductor trade more significant as a conviction signal.</div>
+              <div class="congress-source">Source: <a href="https://www.fec.gov/data/candidate/H4TX10093/" target="_blank" rel="noopener">FEC.gov candidate profile</a> · OpenSecrets career data</div>
+            </div>
+          </div>
         </div>
-        <div class="congress-card">
+        <div class="congress-card" onclick="toggleCongress('pelosi')">
           <div class="name">Nancy Pelosi</div>
           <div class="party">D-CA · $51.7M VOL · 87% WIN RATE</div>
           <span class="tag tag-yellow">RELOADING</span>
           <div class="status">No new filings since Jan 23. Last moves: VST nuclear buy + GOOGL, AMZN, NVDA reloads. She is not done.</div>
+          <div class="congress-tap-hint">▼ tap for detail</div>
+          <div class="congress-expand" id="congress-pelosi">
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Last Known Disclosed Trades · January 23, 2026 PTR</div>
+              <div class="congress-expand-body">VST (Vistra Energy) — 50 call options exercised, capturing 5,000 shares. Nuclear power AI data center play. GOOGL — reload in $500K–$1M range. AMZN — reload in $500K–$1M range. NVDA — reload confirmed. Pattern: profit-taking in extended tech positions, reloading AI infrastructure, pivoting to nuclear energy. Estimated total filing value: $3M–$8M range across all positions.</div>
+              <div class="congress-source">Source: <a href="https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20033725.pdf" target="_blank" rel="noopener">House Clerk PTR Filing 20033725 · January 23, 2026</a></div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Committee Jurisdiction</div>
+              <div class="congress-expand-body">No current committee assignments — minority member. Former Speaker of the House. Her signal weight comes from pattern recognition and win rate (87%) rather than committee overlap. Her trades are widely followed as a leading indicator of Democratic establishment positioning on tech and AI.</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Top Industry Donors (Career · FEC Data)</div>
+              <div class="congress-expand-body">Securities and Investment · Technology · Real Estate · Entertainment · Law firms. Heavy Silicon Valley donor base throughout career. Industry donor alignment with her tech and AI portfolio positions creates meaningful overlap — her investment interests and her donor base point in the same direction.</div>
+              <div class="congress-source">Source: <a href="https://www.fec.gov/data/candidate/H8CA05035/" target="_blank" rel="noopener">FEC.gov candidate profile</a> · OpenSecrets career data</div>
+            </div>
+          </div>
         </div>
-        <div class="congress-card">
+        <div class="congress-card" onclick="toggleCongress('fields')">
           <div class="name">Cleo Fields</div>
           <div class="party">D-LA · $21.2M VOL · MOST ACTIVE HIGH-VALUE</div>
           <span class="tag tag-green">SIGNAL CONFIRMED</span>
           <div class="status">Bought NVDA before Trump lifted AI chip export ban to China. Most actionable recent trade in the system.</div>
+          <div class="congress-tap-hint">▼ tap for detail</div>
+          <div class="congress-expand" id="congress-fields">
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Last Known Confirmed Signal Trade</div>
+              <div class="congress-expand-body">NVDA — purchased before Trump administration lifted AI chip export ban to China. NVDA surged on the announcement. This is a confirmed pre-policy trade with a clear government action as the subsequent catalyst. Trade amount: disclosed in STOCK Act range, estimated $15K–$50K. Fields overtook McCaul as the most active high-value trader by signal quality in 2026.</div>
+              <div class="congress-source">Source: <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">House Clerk STOCK Act filings</a> · Last checked June 7, 2026</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Committee Jurisdiction</div>
+              <div class="congress-expand-body">House Financial Services Committee · House Science, Space, and Technology Committee. Science and Technology committee gives direct visibility into semiconductor and AI policy deliberations. NVDA trade occurred while serving on Science committee — committee overlap confirmed. HIGH SIGNAL weight per system rules.</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Top Industry Donors (Career · FEC Data)</div>
+              <div class="congress-expand-body">Financial Services · Real Estate · Law Firms · Energy. Louisiana-based donor base with financial services emphasis. No major semiconductor or tech PAC contributions identified — making the NVDA trade a personal conviction buy not driven by donor relationships. Signal weight increases when trade diverges from donor base.</div>
+              <div class="congress-source">Source: <a href="https://www.fec.gov/data/candidate/H4LA02073/" target="_blank" rel="noopener">FEC.gov candidate profile</a></div>
+            </div>
+          </div>
         </div>
-        <div class="congress-card">
+        <div class="congress-card" onclick="toggleCongress('gottheimer')">
           <div class="name">Josh Gottheimer</div>
           <div class="party">D-NJ · NEWLY MONITORED — 7TH POLITICIAN</div>
           <span class="tag tag-yellow">PATTERN FORMING</span>
           <div class="status">June 3 filing: bought MU + Lumentum (LITE) in May. Two semiconductor-adjacent names in one filing period.</div>
+          <div class="congress-tap-hint">▼ tap for detail</div>
+          <div class="congress-expand" id="congress-gottheimer">
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Last Known Disclosed Trades · June 3, 2026 PTR</div>
+              <div class="congress-expand-body">MU (Micron Technology) — purchased May 21, 2026. Estimated $1K–$15K range. MU surged 30% in two weeks following purchase. LITE (Lumentum Holdings) — purchased May 22, 2026. Estimated $1K–$15K range. Lumentum produces optical components used in AI data center interconnects. Two semiconductor-adjacent names in the same filing period is a pattern, not a coincidence. Also disclosed a sale of INTU (Intuit) in the same filing.</div>
+              <div class="congress-source">Source: <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">House Clerk PTR filing · June 3, 2026</a></div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Committee Jurisdiction</div>
+              <div class="congress-expand-body">House Financial Services Committee. Financial services committee gives visibility into capital markets, banking regulation, and fintech policy. MU and LITE are semiconductor and optical component names — not direct Financial Services committee jurisdiction. This lowers the committee overlap weight slightly. MEDIUM signal weight rather than HIGH per system rules.</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Top Industry Donors (Career · FEC Data)</div>
+              <div class="congress-expand-body">Securities and Investment · Finance · Real Estate · Law Firms · Technology. Heavy Wall Street and New Jersey financial services donor base. Financial services industry alignment with Financial Services committee assignment is significant. Semiconductor buys outside his primary donor industries suggest personal conviction rather than donor-driven positioning.</div>
+              <div class="congress-source">Source: <a href="https://www.fec.gov/data/candidate/H8NJ05120/" target="_blank" rel="noopener">FEC.gov candidate profile</a></div>
+            </div>
+          </div>
         </div>
-        <div class="congress-card">
+        <div class="congress-card" onclick="toggleCongress('khanna')">
           <div class="name">Ro Khanna</div>
           <div class="party">D-CA · $53.4M VOL</div>
           <span class="tag tag-red">SELLING SEMIS</span>
           <div class="status">Actively selling ASML, Micron, Ultra Clean at 37–79% gains. Smart money taking profits.</div>
+          <div class="congress-tap-hint">▼ tap for detail</div>
+          <div class="congress-expand" id="congress-khanna">
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Last Known Disclosed Trades</div>
+              <div class="congress-expand-body">ASML — sold at approximately +31% gain. Micron (MU) — sold at approximately +79% gain. Ultra Clean Holdings — sold at approximately +37% gain. Pattern: systematic profit-taking across semiconductor positions after extended run. Khanna represents Silicon Valley and his trades follow the sector closely. When smart money in the semiconductor space is selling at these gain levels, pay attention to where they rotate next.</div>
+              <div class="congress-source">Source: <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">House Clerk STOCK Act filings</a> · Last checked June 7, 2026</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Committee Jurisdiction</div>
+              <div class="congress-expand-body">House Armed Services Committee · House Oversight Committee. Silicon Valley district gives him direct relationships with major tech companies. Armed Services committee overlap with semiconductor defense supply chain is meaningful. His selling semis while sitting on Armed Services is a notable signal — suggests he believes the current semiconductor run is extended.</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Top Industry Donors (Career · FEC Data)</div>
+              <div class="congress-expand-body">Technology · Securities and Investment · Electronics · Software · Venture Capital. Heaviest tech donor base of any monitored politician. Silicon Valley PAC money dominates his fundraising. His trades and his donor base are perfectly aligned — he is investing in the same sector his donors represent. This alignment makes his sell signal meaningful — when someone that close to the industry sells, it carries weight.</div>
+              <div class="congress-source">Source: <a href="https://www.fec.gov/data/candidate/H8CA17073/" target="_blank" rel="noopener">FEC.gov candidate profile</a></div>
+            </div>
+          </div>
         </div>
-        <div class="congress-card">
+        <div class="congress-card" onclick="toggleCongress('shreve')">
           <div class="name">Jefferson Shreve</div>
           <div class="party">R-IN · $29.3M VOL</div>
           <span class="tag tag-gray">MONITOR</span>
           <div class="status">High frequency, broad holdings. No new sector pattern this week.</div>
+          <div class="congress-tap-hint">▼ tap for detail</div>
+          <div class="congress-expand" id="congress-shreve">
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Trading Profile</div>
+              <div class="congress-expand-body">556 disclosed trades, $29.3M volume. High frequency trader with broad sector exposure — does not concentrate in any single sector the way McCaul or Pelosi do. His value to this system is as a confirmation data point: when Shreve clusters buys in the same sector as a higher-tier trader within the same 45-day window, that convergence elevates the signal weight of the higher-tier trade.</div>
+              <div class="congress-source">Source: <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">House Clerk STOCK Act filings</a> · Last checked June 7, 2026</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Committee Jurisdiction</div>
+              <div class="congress-expand-body">House Judiciary Committee · House Small Business Committee. Lower conflict score than other monitored politicians — committee assignments do not directly overlap with his primary trading sectors. This reduces the insider information inference but does not eliminate his usefulness as a volume and pattern data point.</div>
+            </div>
+            <div class="congress-expand-section">
+              <div class="congress-expand-label">Top Industry Donors (Career · FEC Data)</div>
+              <div class="congress-expand-body">Real Estate · Finance · Manufacturing · Retail. Indiana-based donor base reflecting his district's economic composition. No dominant tech or defense PAC presence. His broad trading pattern suggests personal investment philosophy rather than donor-aligned positioning — lower signal weight per system rules but useful for convergence confirmation.</div>
+              <div class="congress-source">Source: <a href="https://www.fec.gov/data/candidate/H2IN05164/" target="_blank" rel="noopener">FEC.gov candidate profile</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -981,6 +1140,12 @@
 <script>
 function toggleRow(id) {
   var el = document.getElementById('expand-' + id);
+  if (el) {
+    el.classList.toggle('open');
+  }
+}
+function toggleCongress(id) {
+  var el = document.getElementById('congress-' + id);
   if (el) {
     el.classList.toggle('open');
   }
