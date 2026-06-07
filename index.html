@@ -160,6 +160,10 @@
     border-bottom: 1px solid var(--border);
     border-right: 1px solid var(--border);
     white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--surface2);
   }
 
   thead th:first-child {
@@ -167,7 +171,8 @@
     padding-left: 16px;
     position: sticky;
     left: 0;
-    z-index: 2;
+    top: 0;
+    z-index: 4;
     background: var(--surface2);
   }
 
@@ -455,6 +460,7 @@
   <!-- HERO DESCRIPTION -->
   <div style="padding: 24px 0 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 28px;">
     <p style="font-size: 14px; color: #c8c8d8; line-height: 1.8; max-width: 800px;">This monitor cross-references four publicly available data sources — presidential SEC filings, congressional STOCK Act disclosures, Pentagon contract announcements, and Truth Social — to identify signal patterns before they are priced into the broader market. Each ticker is rated independently across signal categories and assigned an overall conviction level based on how many independent sources align. The thesis: when the President buys a stock, a congressional trader buys the same sector, and the Pentagon awards a contract to that company within the same window, that three-factor convergence has historically preceded significant price movement. The two grids below reflect the current state of that analysis — the Signal Grid tracks conviction strength, the Stability Grid tracks defensive resilience for investors looking to hedge.</p>
+    <a href="javascript:void(0)" onclick="document.getElementById('daily-analysis').scrollIntoView({behavior:'smooth'})" style="display:inline-block;margin-top:16px;font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);text-decoration:none;border:1px solid rgba(232,255,71,0.4);padding:8px 18px;border-radius:4px;letter-spacing:1px;cursor:pointer;" onmouseover="this.style.background='rgba(232,255,71,0.08)'" onmouseout="this.style.background='transparent'">↓ Read Full Analysis</a>
   </div>
 
   <!-- SIGNAL GRID -->
@@ -807,7 +813,7 @@
   </div>
 
   <!-- SECTION 1: TRUTH SOCIAL -->
-  <div class="section">
+  <div class="section" id="daily-analysis">
     <div class="section-header">
       <span class="section-num">S1</span>
       <span class="section-title">Truth Social — Past 48h</span>
@@ -838,7 +844,7 @@
       <span class="section-title">Congressional Traders — STOCK Act Filings</span>
     </div>
     <div class="section-body">
-      <div class="alert">⚡ PRIORITY WATCH — McCaul has still NOT bought semiconductors. This is the single highest-conviction confirmation signal in the system. When it fires, treat it as a five-alarm alert.</div>
+      <div class="alert">⚡ PRIORITY WATCH — McCaul has still NOT bought semiconductors. This is the single highest-conviction confirmation signal in the system. When it fires, treat it as a five-alarm alert. System now monitors 15 politicians across 3 tiers — Tier 1 and Tier 2 checked daily, Tier 3 weekly.</div>
       <div class="congress-grid">
         <div class="congress-card">
           <div class="name">Michael McCaul</div>
@@ -927,7 +933,7 @@
         <div class="macro-card red">
           <div class="macro-label">Iran Ceasefire</div>
           <div class="macro-value">Stalled</div>
-          <div class="macro-sub">Netanyahu: "war is not over" · Oil stays elevated · Cybersecurity demand accelerating</div>
+          <div class="macro-sub">60-day ceasefire extension framework tentatively agreed — nuclear terms still unresolved · Intermittent clashes persist into June · Oil stays elevated · Cybersecurity demand elevated</div>
         </div>
         <div class="macro-card yellow">
           <div class="macro-label">SPCX IPO</div>
@@ -951,12 +957,12 @@
   <!-- BOTTOM LINE -->
   <div class="bottom-line">
     <div class="label">Bottom Line — June 7, 2026</div>
-    <p>The Pentagon AI thesis is not breaking — it is building. Contracts are signed across every major hyperscaler. The NDAA June deadline is live this month. Iran is unresolved and elevating energy and cybersecurity signals. The semiconductor selloff this week was a rotation event driven by Broadcom earnings and a strong jobs report spooking rate traders — not a thesis break. The one unfired signal that changes the conviction level of this entire system: McCaul buys semiconductors. Watch for a Pentagon AI team announcement this month. That is the catalyst the market has not priced yet. Check back Monday.</p>
+    <p>Nothing in the system changed this weekend. Pentagon AI contracts confirmed across all major Trump Q1 holdings — eight companies now hold classified network clearance. NDAA cross-functional AI team deadline is live this week — that announcement is the IV catalyst the market has not priced yet. Iran ceasefire holding tentatively but fragile, nuclear terms still unresolved — energy and cybersecurity remain elevated. Congressional monitoring now expanded to 15 politicians across three tiers. McCaul has not bought semiconductors. SPCX prices Thursday June 12 — do not touch it day one. Wait for the 20-35% post-IPO dump.</p>
   </div>
 
   <!-- START DATE -->
   <div style="text-align:center;padding:16px 20px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:0;">
-    Signal tracking commenced June 2, 2026. All ratings reflect publicly available data collected from that date forward. Historical data referenced prior to this date is provided for contextual validation only and does not represent active monitoring.
+    Signal tracking commenced June 2, 2026. All ratings reflect publicly available data collected from that date forward. Congressional monitoring expanded June 8, 2026 to 15 politicians across 3 tiers. Historical data referenced prior to this date is provided for contextual validation only and does not represent active monitoring.
   </div>
 
   <!-- DISCLAIMER -->
