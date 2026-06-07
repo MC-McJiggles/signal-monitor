@@ -359,6 +359,38 @@
   .macro-card.green { border-color: rgba(57,255,143,0.3); }
   .macro-card.yellow { border-color: rgba(255,209,102,0.3); }
   .macro-card.red { border-color: rgba(255,71,87,0.3); }
+  .macro-card { cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .macro-card:hover { background: rgba(255,255,255,0.03); }
+  .macro-expand {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: #c8c8d8;
+    line-height: 1.7;
+  }
+  .macro-expand a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232,255,71,0.3);
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+  }
+  .macro-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .macro-tap-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 4px;
+  }
 
   /* DISCLAIMER */
   .disclaimer {
@@ -1066,35 +1098,65 @@
     </div>
     <div class="section-body">
       <div class="macro-grid">
-        <div class="macro-card yellow">
+        <div class="macro-card yellow" onclick="toggleMacro('jobs')">
           <div class="macro-label">Jobs Report (May)</div>
           <div class="macro-value">+172K Payrolls</div>
           <div class="macro-sub">Unemployment 4.3% · Beat expectations · Pushes Fed toward hold</div>
+          <div class="macro-tap-hint">▼ tap</div>
+          <div class="macro-expand" id="macro-jobs">
+            The Bureau of Labor Statistics released the May 2026 nonfarm payrolls report on June 6, 2026. The economy added 172,000 jobs, beating the consensus estimate of approximately 150,000. Unemployment held at 4.3%. Average hourly earnings rose 0.3% month over month. A strong jobs number is a double-edged sword — it signals economic resilience but pushes the Federal Reserve toward holding interest rates higher for longer, which pressures tech valuations by increasing the discount rate applied to future earnings. The rate hold environment is a mild headwind for growth stocks but does not change the government contract thesis for defense and AI names.
+            <div class="macro-date">Published: June 6, 2026 · <a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">Bureau of Labor Statistics — Employment Situation</a></div>
+          </div>
         </div>
-        <div class="macro-card red">
+        <div class="macro-card red" onclick="toggleMacro('consumer')">
           <div class="macro-label">Consumer Sentiment</div>
           <div class="macro-value">Collapsing</div>
           <div class="macro-sub">Kraft · McDonald's · Whirlpool all issued recession-level warnings this week</div>
+          <div class="macro-tap-hint">▼ tap</div>
+          <div class="macro-expand" id="macro-consumer">
+            Three companies in completely different consumer sectors issued near-identical warnings within the same week. Kraft Heinz cited consumer trade-down behavior and volume declines across branded products. McDonald's — the cheapest restaurant option that exists — reported traffic softness and noted consumers are cutting discretionary visits even at the $5 price point. Whirlpool's North America chief explicitly named the Iran war as a consumer sentiment killer, citing a 15% contraction in discretionary appliance demand. When McDonald's is struggling, the consumer recession is not theoretical. The University of Michigan Consumer Sentiment Index has been tracking at or near record lows through Q2 2026, consistent with these corporate warnings.
+            <div class="macro-date">Corporate warnings issued: June 3–6, 2026 · <a href="https://www.conference-board.org/topics/consumer-confidence" target="_blank" rel="noopener">Conference Board Consumer Confidence Index</a></div>
+          </div>
         </div>
-        <div class="macro-card red">
+        <div class="macro-card red" onclick="toggleMacro('iran')">
           <div class="macro-label">Iran Ceasefire</div>
-          <div class="macro-value">Stalled</div>
+          <div class="macro-value">Fragile</div>
           <div class="macro-sub">60-day ceasefire extension framework tentatively agreed — nuclear terms still unresolved · Intermittent clashes persist into June · Oil stays elevated · Cybersecurity demand elevated</div>
+          <div class="macro-tap-hint">▼ tap</div>
+          <div class="macro-expand" id="macro-iran">
+            The Pakistan-brokered ceasefire was declared April 8, 2026 after Trump set a series of escalating deadlines. The initial two-week ceasefire has been extended twice. As of early June, US and Iranian negotiators have reached tentative agreement on a memorandum of understanding framework for a 60-day extension, but the nuclear enrichment question — Iran holds 440.9 kilograms of uranium enriched to 60% purity, a short technical step from weapons-grade — remains unresolved. Trump stated publicly the sides were close but he was not rushing. A US naval blockade on Iranian shipping remains active. Intermittent clashes have continued through June. Oil prices remain elevated as a result, directly supporting offshore drilling economics and cybersecurity demand from Iranian cyber threat activity.
+            <div class="macro-date">Ceasefire declared: April 8, 2026 · <a href="https://www.congress.gov/crs-product/IN12678" target="_blank" rel="noopener">Congressional Research Service — US-Iran Ceasefire Assessment</a></div>
+          </div>
         </div>
-        <div class="macro-card yellow">
+        <div class="macro-card yellow" onclick="toggleMacro('spcx')">
           <div class="macro-label">SPCX IPO</div>
-          <div class="macro-value">June 12</div>
+          <div class="macro-value">June 12 — 5 Days</div>
           <div class="macro-sub">Prices June 11 · 30% retail allocation · Watch for 20–35% post-IPO dump</div>
+          <div class="macro-tap-hint">▼ tap</div>
+          <div class="macro-expand" id="macro-spcx">
+            SpaceX filed its S-1 publicly on May 20, 2026 and Amendment No. 1 on June 1. Target price $135 per share, 555.6 million shares, targeting $75 billion raise at a $1.75 trillion valuation — the largest IPO in history if completed. Roadshow launched June 4. Shares price June 11 after market close, first trading day June 12 on Nasdaq under ticker SPCX. Key risk flags: $4.28 billion net loss in Q1 2026 alone, accumulated deficit of $41.3 billion, 30% retail allocation (three times the normal mega-cap norm), fixed price bypassing normal bookbuilding. Nasdaq fast-entry rules allow inclusion after 15 trading days — passive fund forced buying will be the real price support mechanism, not fundamentals. December 2026 lockup expiration is the second major watch date. Real company. Grift-like IPO structure. Do not buy day one.
+            <div class="macro-date">S-1 filed: May 20, 2026 · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=spacex&CIK=&type=S-1&dateb=&owner=include&count=40" target="_blank" rel="noopener">SEC EDGAR — SpaceX S-1 Filing</a></div>
+          </div>
         </div>
-        <div class="macro-card green">
+        <div class="macro-card green" onclick="toggleMacro('ndaa')">
           <div class="macro-label">NDAA AI Deadline</div>
-          <div class="macro-value">June 2026</div>
+          <div class="macro-value">June 2026 — Live Now</div>
           <div class="macro-sub">Pentagon cross-functional AI team mandate expires THIS MONTH</div>
+          <div class="macro-tap-hint">▼ tap</div>
+          <div class="macro-expand" id="macro-ndaa">
+            Section 1533 of the FY2026 National Defense Authorization Act requires the Secretary of Defense to establish a cross-functional team to develop frameworks for compliance with ethical principles in the development and procurement of AI models. The deadline falls in June 2026 — this month. The Pentagon released its AI Strategy memoranda on January 9, 2026 signaling a commercial-first, speed-over-constraints approach. Eight companies signed classified AI network deals in May 2026: SpaceX, OpenAI, Google, NVDA, Microsoft, Amazon, Reflection, and Oracle. The formal NDAA-mandated team announcement has not yet been made. When it is, it will represent official government validation of the Pentagon AI modernization thesis and is the most likely near-term catalyst for implied volatility expansion in tech options.
+            <div class="macro-date">NDAA signed: December 2025 · <a href="https://www.federalregister.gov/documents/search?conditions%5Bterm%5D=national+defense+authorization+act+2026" target="_blank" rel="noopener">Federal Register — NDAA 2026</a> · <a href="https://www.insidegovernmentcontracts.com/2026/02/pentagon-releases-artificial-intelligence-strategy/" target="_blank" rel="noopener">Pentagon AI Strategy — February 2026</a></div>
+          </div>
         </div>
-        <div class="macro-card yellow">
+        <div class="macro-card yellow" onclick="toggleMacro('semis')">
           <div class="macro-label">Semiconductor Rotation</div>
           <div class="macro-value">Broadcom Selloff</div>
           <div class="macro-sub">MU -6.3% · AVGO -3.8% · MRVL -8% · AMD -6.3% Friday · Rotation not thesis break</div>
+          <div class="macro-tap-hint">▼ tap</div>
+          <div class="macro-expand" id="macro-semis">
+            Broadcom reported Q2 2026 earnings on June 5. Revenue beat expectations but AI chip growth targets were left unchanged rather than raised, disappointing investors who had priced in upward revisions. The resulting selloff spread across the entire semiconductor sector on June 6 — Micron fell 6.3%, Broadcom itself dropped 3.8%, Marvell lost 8%, AMD declined 6.3%. This was a rotation event, not a thesis break. The selloff was driven by valuation normalization after an extended semiconductor rally, not by any deterioration in AI infrastructure demand. Pentagon AI classified network contracts were signed in May across NVDA, MSFT, AMZN, GOOGL, and ORCL — none of those demand signals changed on June 6. The rotation creates a potential re-entry opportunity in names where the government contract thesis remains intact.
+            <div class="macro-date">Broadcom earnings: June 5, 2026 · Selloff: June 6, 2026 · Source: Major financial news outlets · No government source applicable</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1144,10 +1206,24 @@ function toggleRow(id) {
     el.classList.toggle('open');
   }
 }
+function toggleMacro(id) {
+  var el = document.getElementById('macro-' + id);
+  if (el) {
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+    } else {
+      el.style.display = 'block';
+    }
+  }
+}
 function toggleCongress(id) {
   var el = document.getElementById('congress-' + id);
   if (el) {
-    el.classList.toggle('open');
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+    } else {
+      el.style.display = 'block';
+    }
   }
 }
 </script>
