@@ -1,0 +1,6 @@
+Existing repo: github.com/MC-McJiggles/signal-monitor
+
+Add ONE new file to it:
+├── index.html (already there)
+├── README.md (already there)
+└── algorithms.json (NEW — you create this)
