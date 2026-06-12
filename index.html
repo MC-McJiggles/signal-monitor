@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Signal Trackers</title>
+    <title>NYSE Tracker | Real-Time Stock Signal Monitor</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,258 +19,112 @@
             --red: #ff4757;
             --gray: #3a3a4a;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: linear-gradient(160deg, #050808 0%, #0a0f1f 100%);
             color: var(--text-primary);
             font-family: 'DM Sans', sans-serif;
-            font-size: 13px;
             line-height: 1.6;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.15s;
         }
+
+        a:hover {
+            color: #fff;
+        }
+
         header {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 8, 8, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            max-width: 920px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        header nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            margin-left: 24px;
+            color: var(--muted);
+        }
+
+        header nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            flex: 1;
+            max-width: 920px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 32px 20px;
+        }
+
+        .hero {
             text-align: center;
             margin-bottom: 60px;
         }
-        header h1 {
+
+        .hero h2 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(28px, 5vw, 48px);
+            font-size: clamp(28px, 5vw, 52px);
             font-weight: 900;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-            background: linear-gradient(90deg, var(--accent), #4ade80);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(90deg, var(--accent), var(--green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        header p {
+
+        .hero p {
+            font-size: 15px;
             color: var(--muted);
-            font-size: 14px;
-            max-width: 540px;
-            margin: 0 auto;
+            max-width: 560px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
         }
-        .trackers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .card {
-            background: linear-gradient(135deg, #0b1120 0%, #0d1428 100%);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
-            padding: 22px;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-        .card:hover {
-            border-color: rgba(255, 255, 255, 0.14);
-            transform: translateY(-2px);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-        .card-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-        .card-icon {
-            font-size: 24px;
-        }
-        .card-summary {
-            font-size: 13px;
-            color: #cbd5e1;
-            line-height: 1.65;
-            margin-bottom: 12px;
-            display: none;
-        }
-        .card-summary.show {
-            display: block;
-        }
-        .card-full {
-            font-size: 12px;
-            color: #a0aec0;
-            line-height: 1.8;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .card-full.show {
-            max-height: 500px;
-        }
-        .card-link {
+
+        .cta-button {
             display: inline-block;
-            margin-top: 12px;
-            padding: 8px 12px;
             background: var(--accent);
             color: #000;
+            padding: 12px 32px;
             border-radius: 8px;
-            text-decoration: none;
             font-family: 'Space Mono', monospace;
             font-size: 11px;
-            font-weight: 700;
-            transition: all 0.15s;
-        }
-        .card-link:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-        .expand-toggle {
-            font-family: 'Space Mono', monospace;
-            font-size: 10px;
-            color: var(--muted);
-            margin-top: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            padding: 24px 20px;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-        .footer-link {
-            display: inline-block;
-            margin: 0 12px;
-            color: var(--accent);
-            text-decoration: none;
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            transition: opacity 0.15s;
-        }
-        .footer-link:hover {
-            opacity: 0.8;
-        }
-        .disclaimer {
-            font-family: 'Space Mono', monospace;
-            font-size: 10px;
-            color: var(--muted);
-            margin-top: 20px;
-            line-height: 1.9;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Investment Signal Trackers</h1>
-            <p>Real-time monitoring of government signals, regulatory catalysts, and congressional trades. Four tools. One thesis: catch the signal before the market does.</p>
-        </header>
-        <div class="trackers-grid">
-            <div class="card" onclick="toggleCard(this)">
-                <div class="card-header">
-                    <div class="card-title">Trump + Congress Monitor</div>
-                    <div class="card-icon">📊</div>
-                </div>
-                <div class="card-summary show">Cross-references Trump SEC trades, 15 monitored politicians via STOCK Act filings, government contracts, and Truth Social posts. Flags HIGH/MEDIUM/WATCH signals based on trade + congressional alignment + government deal overlap.</div>
-                <div class="card-full">
-                    <strong>Core Thesis:</strong> Trump buys stock 6-8 weeks before praising it or visiting the company. Government contracts follow. Stock rises 30-200% within catalyst window.<br><br>
-                    <strong>Signal Tiers:</strong><br>
-                    • HIGH SIGNAL: Trump trade + congressional buy + government deal within 60 days (~75% accuracy)<br>
-                    • MEDIUM SIGNAL: Two of three factors (~55-65% accuracy)<br>
-                    • WATCH LIST: One factor present (~30-40% accuracy)<br><br>
-                    <strong>Data Sources:</strong> OGE Form 278-T, House Clerk PTR filings, Pentagon press releases, sam.gov contracts, Truth Social<br><br>
-                    <strong>Key Unfired Signal:</strong> McCaul (Semiconductor Caucus Chair) semiconductor buy = highest conviction confirmation signal in system.
-                </div>
-                <a href="https://mc-mcjiggles.github.io/signal-monitor/" target="_blank" rel="noopener" class="card-link">→ OPEN MONITOR</a>
-                <div class="expand-toggle">Click to expand</div>
-            </div>
-            <div class="card" onclick="toggleCard(this)">
-                <div class="card-header">
-                    <div class="card-title">Moonshot Scanner</div>
-                    <div class="card-icon">🚀</div>
-                </div>
-                <div class="card-summary show">Monitors five companies waiting for binary regulatory catalysts. FAA certifications, FDA approvals, mining permits, Pentagon contracts. Stock either gets repriced or doesn't — high risk, high reward.</div>
-                <div class="card-full">
-                    <strong>How It Works:</strong> Company gets stuck for years waiting on regulators. Regulators finally move. Stock gets repriced. You find out early because most people don't track regulatory calendars.<br><br>
-                    <strong>Current Catalysts:</strong><br>
-                    • JOBY + ACHR: FAA eVTOL certification race (binary winner-take-most)<br>
-                    • LRMR: FDA approval THIS MONTH<br>
-                    • SLRS: Mining permit in Ecuador<br>
-                    • UURAF: Pentagon rare earth facility ($18.4M funding)<br><br>
-                    <strong>Each Ticker Shows:</strong> What they're waiting for, who's funding them, exact timeline, legal/execution/market risks.<br><br>
-                    <strong>Data Sources:</strong> SEC filings, FDA announcements, FAA certifications, government contract databases.
-                </div>
-                <a href="https://mc-mcjiggles.github.io/Moonshot-scanner/" target="_blank" rel="noopener" class="card-link">→ OPEN SCANNER</a>
-                <div class="expand-toggle">Click to expand</div>
-            </div>
-            <div class="card" onclick="toggleCard(this)">
-                <div class="card-header">
-                    <div class="card-title">Zombie Tracker</div>
-                    <div class="card-icon">🧟</div>
-                </div>
-                <div class="card-summary show">Finds companies that hit 52-week lows but are bouncing back with verified catalysts. New CEO, earnings beat, government contract, FDA approval, restructuring, activist investor. Real reasons behind the recovery.</div>
-                <div class="card-full">
-                    <strong>The Logic:</strong><br>
-                    1. Find crashed stock (52-week low)<br>
-                    2. Confirm recovery (20%+ bounce)<br>
-                    3. Verify catalyst (real public facts only)<br>
-                    4. Strength score (bounce % + days since catalyst)<br><br>
-                    <strong>Why It Works:</strong> When a stock is down 50%+ and bounces, something fundamental changed. Market eventually prices it in. This catches them early.<br><br>
-                    <strong>Signal Categories:</strong> New management, earnings beats, government wins, regulatory approval, restructuring, activist moves, debt resolution.<br><br>
-                    <strong>Data Sources:</strong> Public filings, SEC disclosures, company announcements, news.
-                </div>
-                <a href="https://mc-mcjiggles.github.io/Zombietracker/" target="_blank" rel="noopener" class="card-link">→ OPEN TRACKER</a>
-                <div class="expand-toggle">Click to expand</div>
-            </div>
-            <div class="card" onclick="toggleCard(this)">
-                <div class="card-header">
-                    <div class="card-title">NYSE Turnarounds</div>
-                    <div class="card-icon">📈</div>
-                </div>
-                <div class="card-summary show">Identifies companies beaten down 40-70% from all-time highs with specific catalysts firing in the next 6-18 months. Documents the struggle, the catalyst, the target. Real research, your decision.</div>
-                <div class="card-full">
-                    <strong>The Framework:</strong><br>
-                    • THE STRUGGLE: How much it fell and why<br>
-                    • THE CATALYST: What event in next few months changes the story<br>
-                    • THE TARGET: Where stock could realistically trade if catalyst fires<br><br>
-                    <strong>Examples:</strong> Healthcare companies losing/winning government contracts, logistics restructuring, retail adapting to consumer behavior shifts.<br><br>
-                    <strong>Grid Metrics:</strong> Entry price, upside potential, risk level, sentiment, catalyst timing. Click any row to expand and see detailed analysis with IR page links and government databases for verification.<br><br>
-                    <strong>Updated Daily:</strong> Earnings reports, government contracts, market data.
-                </div>
-                <a href="https://mc-mcjiggles.github.io/nyseturnarounds/" target="_blank" rel="noopener" class="card-link">→ OPEN MONITOR</a>
-                <div class="expand-toggle">Click to expand</div>
-            </div>
-        </div>
-        <footer>
-            <div>
-                <a href="https://reddit.com/r/bot_btc_at300" target="_blank" rel="noopener" class="footer-link">Reddit Community</a>
-                <a href="https://github.com/MC-McJiggles" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-            </div>
-            <div class="disclaimer">
-                💡 Educational and informational purposes only. Not financial advice. All systems are AI-generated research tools. Investment decisions are solely your responsibility. Past performance ≠ future results.
-            </div>
-        </footer>
-    </div>
-    <script>
-        function toggleCard(cardElement) {
-            const summary = cardElement.querySelector('.card-summary');
-            const full = cardElement.querySelector('.card-full');
-            const toggle = cardElement.querySelector('.expand-toggle');
-            const isExpanded = full.classList.contains('show');
-            if (isExpanded) {
-                full.classList.remove('show');
-                summary.classList.add('show');
-                toggle.textContent = 'Click to expand';
-            } else {
-                full.classList.add('show');
-                summary.classList.remove('show');
-                toggle.textContent = 'Click to collapse';
-            }
-        }
-    </script>
-</body>
-</html>
