@@ -290,6 +290,78 @@
             transform: translateY(-2px);
         }
 
+        .convergence-card {
+            background: linear-gradient(135deg, rgba(232, 255, 71, 0.08) 0%, rgba(57, 255, 143, 0.08) 100%);
+            border: 1px solid rgba(232, 255, 71, 0.2);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .convergence-card-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        .convergence-card-content p {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 500px;
+        }
+
+        .convergence-card-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent) 0%, #d4ff00 100%);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Syne', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(232, 255, 71, 0.3);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(232, 255, 71, 0.12);
+        }
+
+        .convergence-card-icon {
+            font-size: 64px;
+            opacity: 0.8;
+        }
+
         .convergence-section {
             background: linear-gradient(135deg, #0b1120 0%, #0d1428 100%);
             border: 1px solid rgba(232, 255, 71, 0.2);
@@ -311,7 +383,7 @@
             line-height: 1.7;
         }
 
-footer {
+        footer {
             border-top: 1px solid rgba(255, 255, 255, 0.07);
             padding: 24px 20px;
             text-align: center;
@@ -353,6 +425,15 @@ footer {
 
             .toggle-arrow {
                 align-self: flex-end;
+            }
+
+            .convergence-card {
+                flex-direction: column;
+                padding: 24px;
+            }
+
+            .convergence-card-icon {
+                font-size: 48px;
             }
         }
     </style>
@@ -518,12 +599,28 @@ footer {
             </div>
         </section>
 
+        <!-- CONVERGENCE MASTER ANALYSIS SECTION -->
         <section id="convergence">
+            <h2>Convergence <span class="accent">Master Analysis</span></h2>
+            <div class="convergence-card">
+                <div class="convergence-card-content">
+                    <h3>🎯 Convergence Scoring Dashboard</h3>
+                    <p>All 4 scanners converge into one interactive dashboard. See which stocks have signals firing across multiple systems. Scored, ranked, and analyzed for you. Click any position to expand thesis, SEC filings, risk factors, and next catalysts.</p>
+                    <p style="font-size: 12px; color: var(--yellow); margin-top: 12px;">✓ 10 tracked positions • ✓ Real-time scoring • ✓ SEC filings integrated • ✓ Interactive & expandable</p>
+                    <div class="convergence-card-buttons">
+                        <a href="https://mc-mcjiggles.github.io/convergence/" target="_blank" class="cta-button">Launch Dashboard</a>
+                        <a href="https://github.com/MC-McJiggles/convergence" target="_blank" class="cta-button cta-button-secondary">View Code</a>
+                    </div>
+                </div>
+                <div class="convergence-card-icon">📊</div>
+            </div>
+
             <div class="convergence-section">
-                <h3>🎯 What is Convergence?</h3>
+                <h3>What is Convergence?</h3>
                 <p><strong>Convergence = 2+ scanners flagging the same stock independently.</strong> Example: Zombie Scanner sees a 25% bounce + Signal Monitor shows insider buying in the same week = CONVERGENCE. The power is in independent confirmation. Each scanner uses totally different data. When they agree, noise drops and signal rises. That's your edge.</p>
             </div>
         </section>
+
     </main>
 
     <footer>
